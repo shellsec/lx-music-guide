@@ -89,6 +89,16 @@ const resources = [
       ["下载鸿蒙源码 ZIP", github + "/Adamaik/lxmusic-harmony/archive/HEAD.zip"],
       ["iOS 社区原帖", "https://www.52pojie.cn/thread-2089652-1-7.html"]
     ]
+  },
+  {
+    name: "汽水音乐", icon: "♪", color: "mint", platforms: ["电脑", "安卓", "苹果与鸿蒙"],
+    meta: "Windows / macOS / Android / iOS",
+    intro: "抖音出品的音乐客户端，可从官网选择适合设备的版本。",
+    detail: "电脑端在官方下载页选择 Windows 或 macOS 版本，手机端可从官网进入 Android 或 iOS 下载入口。",
+    links: [
+      ["汽水音乐官网", "https://www.qishui.com/"],
+      ["官方下载", "https://www.qishui.com/download"]
+    ]
   }
 ];
 
@@ -111,7 +121,9 @@ function resourceCard(resource) {
   head.append(icon, element("span", "meta", resource.meta));
   const details = element("details", "card-details");
   const links = element("div", "links");
-  for (const [label, address] of [...(resource.links || []), ["项目仓库", resource.repo]]) {
+  const entries = [...(resource.links || [])];
+  if (resource.repo) entries.push(["项目仓库", resource.repo]);
+  for (const [label, address] of entries) {
     const link = element("a", "", label);
     link.href = address;
     links.append(link);
