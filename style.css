@@ -23,7 +23,7 @@ button, summary { cursor: pointer; }
 .skip:focus { transform: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .top { border-bottom: 1px solid var(--line); }
-.top-inner, .foot .wrap { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.top-inner, .foot-nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand, nav { display: flex; align-items: center; gap: 24px; }
 .brand { gap: 10px; font-weight: 750; font-size: 1.08rem; color: var(--ink); text-decoration: none; }
 .disc { width: 30px; aspect-ratio: 1; border-radius: 50%; background: repeating-radial-gradient(circle, #744ebe 0 2px, #402775 3px 5px); border: 2px solid #412976; }
@@ -74,6 +74,11 @@ summary { color: var(--violet); font-weight: 650; font-size: .9rem; }
 .panel ol { padding-left: 1.4em; }
 pre { margin: 6px 0 14px; white-space: pre-wrap; overflow-wrap: anywhere; background: #f3eef8; border-radius: 8px; padding: 12px; font-size: .85rem; }
 .foot { margin-top: 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+.support { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 32px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+.support h2 { font-size: 1.25rem; color: var(--ink); margin-bottom: 6px; }
+.support figure { margin: 0; text-align: center; }
+.support img { display: block; width: 180px; max-width: 100%; height: auto; }
+.support figcaption { margin-top: 6px; }
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { min-height: 400px; }
