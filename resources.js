@@ -95,6 +95,7 @@ const resources = [
     meta: "Windows / macOS / Android / iOS",
     intro: "抖音出品的音乐客户端，可从官网选择适合设备的版本。",
     detail: "电脑端在官方下载页选择 Windows 或 macOS 版本，手机端可从官网进入 Android 或 iOS 下载入口。",
+    activity: "在汽水音乐 App 内，可按活动页面提示观看广告或完成签到任务，领取免费听歌权益。具体任务和权益以 App 内显示为准。",
     links: [
       ["汽水音乐官网", "https://www.qishui.com/"],
       ["官方下载", "https://www.qishui.com/download"]
@@ -128,7 +129,13 @@ function resourceCard(resource) {
     link.href = address;
     links.append(link);
   }
-  details.append(element("summary", "", "安装与链接"), element("p", "", resource.detail), links);
+  details.append(element("summary", "", "安装与链接"), element("p", "", resource.detail));
+  if (resource.activity) {
+    const activity = element("p", "");
+    activity.append(element("strong", "", "免费听歌活动"), document.createElement("br"), resource.activity);
+    details.append(activity);
+  }
+  details.append(links);
   card.append(head, element("h3", "", resource.name), element("p", "", resource.intro), details);
   return card;
 }
