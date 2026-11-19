@@ -3,8 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="查找洛雪、波乐音乐、电视客户端与 BoleServer，获取安装包和音源订阅。">
-<title>音乐资源指南</title>
+<meta name="description" content="按设备查找洛雪音乐、汽水音乐和 Android TV 客户端下载，了解音源订阅导入及 BoleServer 家庭播放服务搭建。">
+<title>洛雪音乐资源指南 | 客户端下载、音源订阅与自建播放</title>
+<link rel="canonical" href="https://shellsec.com/lx-music-guide/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="洛雪音乐资源指南">
+<meta property="og:description" content="按设备查找音乐客户端、安装包和音源导入教程，了解如何搭建家庭播放服务。">
+<meta property="og:url" content="https://shellsec.com/lx-music-guide/">
+<meta property="og:image" content="https://shellsec.com/lx-music-guide/assets/record.png">
+<meta property="og:image:alt" content="紫色唱片、唱机与耳机">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "洛雪音乐资源指南",
+  "url": "https://shellsec.com/lx-music-guide/",
+  "inLanguage": "zh-CN",
+  "description": "音乐客户端下载、音源订阅导入与家庭播放服务搭建指南。",
+  "publisher": {"@type": "Person", "name": "shellsec", "url": "https://shellsec.com/"}
+}
+</script>
 <link rel="stylesheet" href="style.css">
 <script src="resources.js" defer></script>
 </head>
@@ -26,8 +46,141 @@
 <div class="section-head"><div><h2 id="clients-title">选择你的设备</h2><p>按平台筛选，展开卡片查看安装方式。</p></div></div>
 <div class="filters" id="filters" aria-label="设备筛选"></div>
 <p class="sr-only" id="filter-status" role="status"></p>
-<div class="grid" id="resources"></div>
-<noscript>开启 JavaScript 后可按设备筛选。音源和自建服务仍可直接浏览。</noscript>
+<noscript>开启 JavaScript 后可按设备筛选。下方显示全部客户端。</noscript>
+<div class="grid" id="resources">
+  <article class="card" data-platforms="电脑">
+    <div class="card-head"><span class="icon lilac" aria-hidden="true">▣</span><span class="meta">Windows / macOS · 2.12.6</span></div>
+    <h3>洛雪桌面增强版</h3>
+    <p>桌面听歌，支持订阅清单和播放失败自动切换。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>Windows 可选安装包或绿色版。加速下载由第三方提供，也可在 GitHub 发行页下载。</p>
+      <div class="links">
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-desktop-auto-source/releases/download/v2.12.6/lx-music-desktop-v2.12.6-x64-Setup.exe">Windows 安装包（加速）</a>
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-desktop-auto-source/releases/download/v2.12.6/lx-music-desktop-v2.12.6-win_x64-green.7z">Windows 绿色版（加速）</a>
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-desktop-auto-source/releases/download/v2.12.6/lx-music-desktop-2.12.6-arm64.dmg">macOS ARM64（加速）</a>
+      <a href="https://github.com/shellsec/lx-music-desktop-auto-source/releases">GitHub 发行页</a>
+      <a href="https://github.com/shellsec/lx-music-desktop-auto-source">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="安卓">
+    <div class="card-head"><span class="icon peach" aria-hidden="true">▯</span><span class="meta">Android · 1.9.2</span></div>
+    <h3>洛雪安卓增强版</h3>
+    <p>支持扫码、从图片识别或粘贴地址来添加音源。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>在设置中打开「快速添加自定义源」，选择导入单个源或添加订阅清单。加速下载由第三方提供，也可在 GitHub 发行页下载。</p>
+      <div class="links">
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-mobile-auto-source/releases/download/v1.9.2/lx-music-mobile-v1.9.2-arm64-v8a.apk">arm64-v8a（加速）</a>
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-mobile-auto-source/releases/download/v1.9.2/lx-music-mobile-v1.9.2-armeabi-v7a.apk">armeabi-v7a（加速）</a>
+      <a href="https://gh-proxy.com/https://github.com/shellsec/lx-music-mobile-auto-source/releases/download/v1.9.2/lx-music-mobile-v1.9.2-universal.apk">universal（加速）</a>
+      <a href="https://github.com/shellsec/lx-music-mobile-auto-source/releases">GitHub 发行页</a>
+      <a href="https://github.com/shellsec/lx-music-mobile-auto-source">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="游戏机 电脑 安卓 电视">
+    <div class="card-head"><span class="icon pink" aria-hidden="true">♫</span><span class="meta">游戏机 / 桌面 / Android · 1.1.0</span></div>
+    <h3>波乐音乐</h3>
+    <p>覆盖 Switch、PS4、PS5、Vita、Xbox 和 Linux 掌机。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>也包含 Windows、macOS、Linux、Android 和 Android TV。各平台安装方式及包体以项目说明为准。</p>
+      <div class="links">
+      <a href="https://github.com/shellsec/bolemusic">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="电视">
+    <div class="card-head"><span class="icon mint" aria-hidden="true">▤</span><span class="meta">Android TV · 小米电视 / 极米投影</span></div>
+    <h3>LX Music TV</h3>
+    <p>适合遥控器操作，支持大屏歌词和手机扫码填源。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>电视和平板架构不确定时选 universal。通过 U 盘或传文件安装后，打开设置扫码导入 JS 音源。</p>
+      <div class="links">
+      <a href="https://github.com/bmizhou/lx-music-tv/releases/download/2.9.202610241701/LXTV-2.9.202610241701-universal-release.apk">下载 universal APK</a>
+      <a href="https://github.com/bmizhou/lx-music-tv/releases/download/2.9.202610241701/LXTV-2.9.202610241701-arm64-v8a-release.apk">下载 arm64-v8a APK</a>
+      <a href="https://github.com/bmizhou/lx-music-tv/releases">GitHub 发行页</a>
+      <a href="https://github.com/bmizhou/lx-music-tv">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="墨水屏 安卓">
+    <div class="card-head"><span class="icon lilac" aria-hidden="true">▧</span><span class="meta">Android · 墨水屏设备</span></div>
+    <h3>洛雪墨水屏增强版</h3>
+    <p>针对墨水屏优化，支持自定义源和订阅更新。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>按设备架构选择 APK。口袋阅一代选 armeabi-v7a，64 位设备可选 arm64-v8a。</p>
+      <div class="links">
+      <a href="https://github.com/shellsec/lx-music-eink/releases/download/v1.9.3-eink.1/lx-music-mobile-v1.9.3-eink.1-arm64-v8a.apk">下载 arm64-v8a APK</a>
+      <a href="https://github.com/shellsec/lx-music-eink/releases/download/v1.9.3-eink.1/lx-music-mobile-v1.9.3-eink.1-armeabi-v7a.apk">下载 armeabi-v7a APK</a>
+      <a href="https://github.com/shellsec/lx-music-eink/releases/download/v1.9.3-eink.1/lx-music-mobile-v1.9.3-eink.1-universal.apk">下载 universal APK</a>
+      <a href="https://github.com/shellsec/lx-music-eink/releases">GitHub 发行页</a>
+      <a href="https://github.com/shellsec/lx-music-eink">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="电脑">
+    <div class="card-head"><span class="icon peach" aria-hidden="true">⌁</span><span class="meta">洛雪桌面端 · 局域网</span></div>
+    <h3>LXPy 手机遥控</h3>
+    <p>手机和电脑连同一个 Wi-Fi，在手机网页遥控桌面播放。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>在洛雪桌面端的「设置 → 开放 API」启用开放 API 服务，再按 LXPy 说明运行启动脚本。</p>
+      <div class="links">
+      <a href="https://github.com/shellsec/lxpy/archive/HEAD.zip">下载源码 ZIP</a>
+      <a href="https://github.com/shellsec/lxpy">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="苹果与鸿蒙 电脑">
+    <div class="card-head"><span class="icon mint" aria-hidden="true">◎</span><span class="meta">iOS / iPadOS / HarmonyOS NEXT</span></div>
+    <h3>BoleServer 网页播放</h3>
+    <p>在电脑或 NAS 自建服务，再用设备浏览器打开播放器。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>搭建服务并在管理界面设置密码与音源。播放设备与服务在同一局域网时，可直接打开服务地址。</p>
+      <div class="links">
+      <a href="https://github.com/shellsec/boleserver/releases/download/v2.1.3-bole.1/BoleServer.2.1.3.x64.Portable.exe">Windows x64 便携版</a>
+      <a href="https://github.com/shellsec/boleserver/releases/download/v2.1.3-bole.1/BoleServer.2.1.3.arm64.dmg">macOS ARM64 安装包</a>
+      <a href="https://github.com/shellsec/boleserver/releases/latest">GitHub 发行页</a>
+      <a href="#server">查看搭建方式</a>
+      <a href="https://github.com/shellsec/boleserver">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="苹果与鸿蒙">
+    <div class="card-head"><span class="icon pink" aria-hidden="true">◇</span><span class="meta">iOS / HarmonyOS NEXT</span></div>
+    <h3>第三方苹果与鸿蒙客户端</h3>
+    <p>已有社区项目和讨论帖，安装条件随设备和发行渠道而异。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>鸿蒙项目的 GitHub Releases 暂无安装包，可下载源码并参照仓库说明用 DevEco Studio 构建。iOS 社区版本的获取与签名条件见原帖。</p>
+      <div class="links">
+      <a href="https://github.com/Adamaik/lxmusic-harmony/archive/HEAD.zip">下载鸿蒙源码 ZIP</a>
+      <a href="https://www.52pojie.cn/thread-2089652-1-7.html">iOS 社区原帖</a>
+      <a href="https://github.com/Adamaik/lxmusic-harmony">项目仓库</a>
+      </div>
+    </details>
+  </article>
+  <article class="card" data-platforms="电脑 安卓 苹果与鸿蒙">
+    <div class="card-head"><span class="icon mint" aria-hidden="true">♪</span><span class="meta">Windows / macOS / Android / iOS</span></div>
+    <h3>汽水音乐</h3>
+    <p>抖音出品的音乐客户端，可从官网选择适合设备的版本。</p>
+    <details class="card-details">
+      <summary>安装与链接</summary>
+      <p>电脑端在官方下载页选择 Windows 或 macOS 版本，手机端可从官网进入 Android 或 iOS 下载入口。</p>
+    <p><strong>免费听歌活动</strong><br>在汽水音乐 App 内，可按活动页面提示观看广告或完成签到任务，领取免费听歌权益。具体任务和权益以 App 内显示为准。</p>
+      <div class="links">
+      <a href="https://www.qishui.com/">汽水音乐官网</a>
+      <a href="https://www.qishui.com/download">官方下载</a>
+      </div>
+    </details>
+  </article>
+</div>
 </section>
 <section id="sources" class="section" aria-labelledby="sources-title">
 <div class="section-head"><div><h2 id="sources-title">音源与订阅</h2><p>安装客户端后，可按需要添加可信的自定义源。</p></div></div>
