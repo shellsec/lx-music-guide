@@ -79,6 +79,9 @@ pre { margin: 6px 0 14px; white-space: pre-wrap; overflow-wrap: anywhere; backgr
 .support figure { margin: 0; text-align: center; }
 .support img { display: block; width: 180px; max-width: 100%; height: auto; }
 .support figcaption { margin-top: 6px; }
+.site-notice { padding: 0 0 24px; }
+.site-notice h2 { font-size: 1.25rem; color: var(--ink); }
+.site-notice p { margin-top: 6px; }
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { min-height: 400px; }
