@@ -14,21 +14,25 @@ const resources = [
   {
     name: "洛雪桌面增强版", icon: "▣", color: "lilac", platforms: ["电脑"], meta: "Windows / macOS · 2.12.6",
     intro: "桌面听歌，支持订阅清单和播放失败自动切换。",
-    detail: "Windows 可选安装包或绿色版。安装历史版本前可先查看仓库的发行说明。",
+    detail: "Windows 可选安装包或绿色版。加速下载由第三方提供，也可在 GitHub 发行页下载。",
     repo: desktop,
     links: [
-      ["Windows 安装包", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-v2.12.6-x64-Setup.exe"],
-      ["Windows 绿色版", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-v2.12.6-win_x64-green.7z"],
-      ["macOS ARM64", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-2.12.6-arm64.dmg"]
+      ["Windows 安装包（加速）", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-v2.12.6-x64-Setup.exe"],
+      ["Windows 绿色版（加速）", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-v2.12.6-win_x64-green.7z"],
+      ["macOS ARM64（加速）", proxy + desktop + "/releases/download/v2.12.6/lx-music-desktop-2.12.6-arm64.dmg"],
+      ["GitHub 发行页", desktop + "/releases"]
     ]
   },
   {
     name: "洛雪安卓增强版", icon: "▯", color: "peach", platforms: ["安卓"], meta: "Android · 1.9.2",
     intro: "支持扫码、从图片识别或粘贴地址来添加音源。",
-    detail: "在设置中打开「快速添加自定义源」，选择导入单个源或添加订阅清单。二维码应包含完整 HTTP 或 HTTPS 地址。",
+    detail: "在设置中打开「快速添加自定义源」，选择导入单个源或添加订阅清单。加速下载由第三方提供，也可在 GitHub 发行页下载。",
     repo: mobile,
-    links: ["arm64-v8a", "armeabi-v7a", "universal"].map(arch =>
-      [arch, proxy + mobile + "/releases/download/v1.9.2/lx-music-mobile-v1.9.2-" + arch + ".apk"])
+    links: [
+      ...["arm64-v8a", "armeabi-v7a", "universal"].map(arch =>
+        [arch + "（加速）", proxy + mobile + "/releases/download/v1.9.2/lx-music-mobile-v1.9.2-" + arch + ".apk"]),
+      ["GitHub 发行页", mobile + "/releases"]
+    ]
   },
   {
     name: "波乐音乐", icon: "♫", color: "pink", platforms: ["游戏机", "电脑", "安卓", "电视"], meta: "游戏机 / 桌面 / Android · 1.1.0",
