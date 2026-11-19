@@ -66,9 +66,6 @@ summary { color: var(--violet); font-weight: 650; font-size: .9rem; }
 .links { margin-top: 14px; font-size: .85rem; }
 .source-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px; }
 .subscription { background: #f0e7fc; }
-.copy-row { display: flex; gap: 8px; margin-top: 16px; }
-.copy-row input { flex: 1; min-width: 0; border: 1px solid #d6c4ea; border-radius: 8px; padding: 8px 10px; color: var(--ink); background: #fff; font-size: .85rem; }
-.feedback:empty { display: none; }
 .setup { margin-top: 14px; }
 .panel details { margin-top: 12px; }
 .panel ol { padding-left: 1.4em; }
@@ -79,6 +76,9 @@ pre { margin: 6px 0 14px; white-space: pre-wrap; overflow-wrap: anywhere; backgr
 .support figure { margin: 0; text-align: center; }
 .support img { display: block; width: 180px; max-width: 100%; height: auto; }
 .support figcaption { margin-top: 6px; }
+.site-notice { padding-block: 24px; border-bottom: 1px solid var(--line); }
+.site-notice h2 { font-size: 1.25rem; color: var(--ink); }
+.site-notice p { margin-top: 6px; }
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero { min-height: 400px; }
