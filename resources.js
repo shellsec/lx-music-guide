@@ -24,6 +24,18 @@ for (const platform of platforms) {
 }
 showPlatform(platforms[0]);
 
+const sourceRoute = document.querySelector("#source-route");
+const sourceUrl = document.querySelector("#source-url");
+const copyStatus = document.querySelector("#copy-status");
+
+function updateSourceUrl() {
+  sourceUrl.value = sourceRoute.value;
+  copyStatus.textContent = "";
+}
+
+sourceRoute.addEventListener("change", updateSourceUrl);
+updateSourceUrl();
+
 document.querySelector("[data-copy]").addEventListener("click", async event => {
   const field = document.getElementById(event.currentTarget.dataset.copy);
   const status = document.querySelector("#copy-status");
