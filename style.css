@@ -91,6 +91,25 @@ pre { margin: 6px 0 14px; white-space: pre-wrap; overflow-wrap: anywhere; backgr
 .support figure { margin: 0; text-align: center; }
 .support img { display: block; width: 180px; max-width: 100%; height: auto; }
 .support figcaption { margin-top: 6px; }
+@media (min-width: 1024px) {
+  .support {
+    position: fixed;
+    inset: auto 16px 16px auto;
+    z-index: 5;
+    box-sizing: border-box;
+    width: 176px;
+    display: block;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 4px 20px #211b3826;
+    text-align: center;
+  }
+  .support figure { margin-top: 8px; }
+  .support img { width: 144px; margin-inline: auto; }
+}
 .site-notice { padding: 0 0 24px; }
 .site-notice h2 { font-size: 1.25rem; color: var(--ink); }
 .site-notice p { margin-top: 6px; }
