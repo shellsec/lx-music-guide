@@ -1,4 +1,4 @@
-const platforms = ["全部设备","电脑","安卓","电视","墨水屏","游戏机","苹果与鸿蒙"];
+const platforms = ["全部设备","电脑","安卓","车机","电视","墨水屏","游戏机","苹果与鸿蒙"];
 const filterBar = document.querySelector("#filters");
 const cards = [...document.querySelectorAll("#resources .card")];
 const filterStatus = document.querySelector("#filter-status");
