@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人声试音歌单 | 听音指南</title>
+<style>
+:root{
+  --bg:#f7f8fa; --card:#fff; --ink:#1f2430; --muted:#5f6775; --line:#e3e6eb;
+  --blue:#185fa5; --blue-bg:#e6f1fb; --green:#0f6e56; --green-bg:#e1f5ee;
+  --amber:#854f0b; --amber-bg:#faeeda; --red:#a32d2d; --red-bg:#fcebeb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14.5px;line-height:1.65}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px 80px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:40px 0 28px;margin-bottom:24px}
+header .wrap{padding-bottom:0}
+h1{font-size:27px;margin:0 0 6px;font-weight:600}
+.sub{color:var(--muted);margin:0}
+.meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--blue-bg);color:var(--blue)}
+.tag.g{background:var(--green-bg);color:var(--green)}
+.tag.a{background:var(--amber-bg);color:var(--amber)}
+h2{font-size:20px;margin:38px 0 10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font-weight:600}
+h3{font-size:15.5px;margin:20px 0 7px;font-weight:600}
+p{margin:8px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:7px}
+.toc a{display:block;padding:7px 10px;background:var(--bg);border-radius:8px;color:var(--ink);text-decoration:none;font-size:13px}
+.toc a:hover{background:var(--blue-bg);color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:#fff;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f0f3f7;font-weight:600;white-space:nowrap}
+tr:nth-child(even) td{background:#fafbfc}
+tr.done td{background:var(--green-bg)!important;color:var(--muted)}
+.note{border-left:4px solid var(--blue);background:var(--blue-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+.warn{border-left:4px solid var(--red);background:var(--red-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+.tip{border-left:4px solid var(--green);background:var(--green-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+a.plat{display:inline-block;margin:1px 5px 1px 0;padding:1px 7px;border:1px solid var(--line);border-radius:5px;color:var(--blue);text-decoration:none;font-size:11.5px;white-space:nowrap;background:#fff}
+a.plat:hover{background:var(--blue-bg);border-color:var(--blue)}
+a.dl{display:inline-block;margin:1px 5px 1px 0;padding:1px 7px;border:1px solid var(--green);border-radius:5px;color:var(--green);text-decoration:none;font-size:11.5px;white-space:nowrap;background:var(--green-bg)}
+button{font:inherit;font-size:13px;padding:7px 14px;border:1px solid var(--blue);border-radius:8px;background:var(--blue);color:#fff;cursor:pointer;margin:4px 6px 4px 0}
+button.sec{background:#fff;color:var(--blue)}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:10px}
+.bar b{font-size:14px}
+.bar .count{color:var(--green);font-weight:600}
+.dim{background:var(--blue-bg);color:var(--blue);font-size:12px;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.p0{color:var(--red);font-weight:600}
+.p1{color:var(--amber);font-weight:600}
+.p2{color:var(--green);font-weight:600}
+ol.steps{padding-left:22px}
+ol.steps li{margin:6px 0}
+footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.noiprint{display:block}
+@media print{
+  body{background:#fff;font-size:11px}
+  header{padding:10px 0;margin-bottom:12px}
+  h1{font-size:20px}
+  h2{font-size:15px;margin:18px 0 6px;page-break-after:avoid}
+  h3{font-size:12.5px;page-break-after:avoid}
+  .card{padding:10px 12px;margin:8px 0}
+  table{font-size:9.5px;display:table;page-break-inside:auto}
+  tr{page-break-inside:avoid}
+  th,td{padding:3px 5px}
+  .noiprint{display:none!important}
+  a.plat,a.dl{border:none;padding:0;color:#000}
+  a.plat::after{content:" ·"}
+  .toc{display:none}
+}
+</style>
+<link rel="stylesheet" href="listening.css">
+</head>
+<body>
+<nav class="listening-nav noiprint" aria-label="听音指南导航"><div><a href="../index.html#listening">音乐资源指南</a><a href="audio-basics.html">音质与设备入门</a><a href="bluetooth-help.html">蓝牙连接与排查</a><a href="buying-guide.html">耳机与音箱选购</a><a href="world-audio-awards.html">年度耳机与音响奖项</a><a href="headphone-tests.html">耳机评测实战</a><a href="vocal-playlist.html" aria-current="page">人声试音歌单</a></div></nav>
+<header>
+  <div class="wrap">
+    <h1>人声试音歌单</h1>
+    <p class="sub">四类试音维度 · 60+ 首核心曲目 · 26 张专辑 · 9 组发烧试音碟 · 正版下载渠道 · 勾选标记与播放列表导出</p>
+    <div class="meta">
+      <span class="tag">版本 2026-11 · 已补惠威试音碟</span>
+      <span class="tag g">勾选状态自动保存在本机浏览器</span>
+      <span class="tag a">仅提供正版渠道入口，不提供盗版网盘链接</span>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+<div class="card noiprint">
+  <h3 style="margin-top:0">目录与用法</h3>
+  <div class="toc">
+    <a href="#s1">1. 版权与使用说明</a>
+    <a href="#s2">2. 四类试音曲目（核心）</a>
+    <a href="#s3">3. 耐听专辑清单</a>
+    <a href="#s4">4. 正版下载渠道</a>
+    <a href="#s5">5. 鉴别真伪无损</a>
+    <a href="#s6">6. 试音流程</a>
+    <a href="#s7">7. 发烧试音碟全解（惠威/雨林/ABC/龙源）</a>
+  </div>
+</div>
+
+<h2 id="s1">1. 版权与使用说明</h2>
+<div class="card">
+<p>这份歌单给你的是<strong>歌手、专辑、曲目名、测试点和正版入口</strong>。受版权保护的音乐我没有提供、也不会提供网盘下载链接——那类来源往往文件被二次压缩、携带风险，且侵犯创作者权益。</p>
+<p>能合法"拿到文件"的路只有两类：</p>
+<ul>
+<li><strong>订阅会员离线缓存</strong>（QQ音乐/网易云/Apple Music/Tidal）：方便，但文件受 App 控制，会员到期通常失效，不是真正属于你的文件。</li>
+<li><strong>买断下载</strong>（Bandcamp / Qobuz Store / HDtracks / 索尼精选 Hi-Res）：一次付费拿到 FLAC/WAV 文件，无 DRM，可以永久保存、自己备份。想要"网盘里存一份"的，请用这一类。</li>
+</ul>
+<div class="note"><strong>真正的网盘用法：</strong>从正版渠道买断下载后，把 FLAC 文件传到自己的网盘做备份是合理的个人使用。歌单第 4 节列出了每个渠道的直达入口。</div>
+</div>
+
+<h2 id="s2">2. 四类试音曲目（核心）</h2>
+<div class="bar noiprint">
+  <b>进度：<span class="count" id="cnt">0</span> / <span id="tot">0</span> 首已试听</b>
+  <button onclick="exportList()">导出播放列表（TXT）</button>
+  <button class="sec" onclick="resetAll()">清空标记</button>
+  <button class="sec" onclick="window.print()">打印 / 存为 PDF</button>
+</div>
+<p>勾选框可标记"已试听"，状态自动保存到本机浏览器。每首曲目右侧是各平台的搜索直达链接——点击后会用歌手+曲目名自动搜索，省去手动输入。</p>
+<div id="tracks"></div>
+
+<h2 id="s3">3. 耐听专辑清单</h2>
+<p>试音碟解决"器材好不好"，下面这些解决"愿不愿意一直听"。平台链接按专辑名直达搜索。</p>
+<div id="albums"></div>
+
+<h2 id="s4">4. 正版下载渠道（可买断、可存网盘）</h2>
+<table>
+<thead><tr><th>渠道</th><th>格式 / 最高规格</th><th>付费方式</th><th>直达</th><th>适合</th></tr></thead>
+<tbody>
+<tr><td><strong>索尼精选 Hi-Res</strong></td><td>FLAC 24bit/96-192kHz</td><td>单曲/专辑买断</td><td><a class="dl" href="https://music.sonyselect.net/" target="_blank">sonyselect.net</a></td><td class="p2">🟢 国内直连、中文友好，Susan Wong 2026 新专等有 HiRes 版</td></tr>
+<tr><td><strong>Qobuz Store</strong></td><td>FLAC/ALAC/WAV 24bit/192kHz，无 DRM</td><td>买断（也可订阅）</td><td><a class="dl" href="https://www.qobuz.com/" target="_blank">qobuz.com</a></td><td class="p2">🟢 主流曲库最全，爵士古典强，发烧友首选</td></tr>
+<tr><td><strong>Bandcamp</strong></td><td>FLAC/ALAC/WAV/AIFF 24bit/96kHz+，无 DRM</td><td>买断，艺术家分成高</td><td><a class="dl" href="https://bandcamp.com/" target="_blank">bandcamp.com</a></td><td class="p2">🟢 独立音乐/华语新声，买一次无限次下载</td></tr>
+<tr><td><strong>HDtracks</strong></td><td>FLAC/AIFF 24bit/192kHz</td><td>买断</td><td><a class="dl" href="https://www.hdtracks.com/" target="_blank">hdtracks.com</a></td><td class="p1">🟡 经典专辑重制版多，购买前核对母带来源</td></tr>
+<tr><td><strong>NativeDSD</strong></td><td>纯 DSD / DXD 384kHz</td><td>买断</td><td><a class="dl" href="https://www.nativedsd.com/" target="_blank">nativedsd.com</a></td><td class="p1">🟡 顶级发烧，需支持 DSD 的 DAC</td></tr>
+<tr><td><strong>7digital</strong></td><td>MP3 320kbps / FLAC 16-24bit</td><td>买断</td><td><a class="dl" href="https://www.7digital.com/" target="_blank">7digital.com</a></td><td class="p1">🟡 区域补充，某张专辑别处找不到时查这里</td></tr>
+<tr><td><strong>QQ音乐 / 网易云 / 酷狗</strong></td><td>FLAC 无损 / 部分 HiRes（臻品、黑胶 VIP）</td><td>会员订阅，离线缓存</td><td><a class="dl" href="https://y.qq.com/" target="_blank">QQ音乐</a> <a class="dl" href="https://music.163.com/" target="_blank">网易云</a></td><td class="p2">🟢 中文曲库最全，在线听足够；非买断文件</td></tr>
+<tr><td><strong>Apple Music</strong></td><td>AAC 256kbps（蓝牙）/ ALAC 无损 + 空间音频</td><td>订阅</td><td><a class="dl" href="https://music.apple.com/cn/browse" target="_blank">Apple Music</a></td><td class="p2">🟢 苹果生态、爵士欧美曲库强</td></tr>
+<tr><td><strong>Free Music Archive</strong></td><td>MP3 / 高音质，CC 授权</td><td>免费（遵守授权条款）</td><td><a class="dl" href="https://freemusicarchive.org/" target="_blank">freemusicarchive.org</a></td><td class="p1">🟡 免费合法配乐与独立创作，留意 CC 署名要求</td></tr>
+</tbody>
+</table>
+<div class="warn"><strong>买断下载后做三件事：</strong>① 立刻下载到本地，别指望商店永久保留重新下载链接；② 保留原始压缩包、封面和购买凭证；③ 在两个不同位置各备份一份（本地硬盘 + 网盘）。你的归档才是真正属于你的部分。</div>
+
+<h2 id="s5">5. 鉴别真伪无损</h2>
+<div class="card">
+<ul>
+<li><strong>看文件大小：</strong>3-4 分钟的 CD 级 FLAC 通常 15-25MB；如果只有 3-5MB，基本是 MP3 转封装的"伪无损"。</li>
+<li><strong>看频谱：</strong>用声谱图检查，整首歌在 16kHz 处出现一道整齐的天花板，说明来自有损源。</li>
+<li><strong>看母带信息：</strong>24bit 不等于母带。页面若写明 mastering（母带处理）和原始录音格式才可信；24bit 容器也可能只是把 CD 升频。</li>
+<li><strong>MP3 转 FLAC 不可逆：</strong>转格式只会得到一个"和 MP3 听起来一样"的大文件，丢失的信息回不来。</li>
+</ul>
+</div>
+
+<h2 id="s6">6. 试音流程（按顺序来）</h2>
+<ol class="steps">
+<li><strong>准备音源：</strong>FLAC 无损起步，能用 HiRes 更好。先用第 5 节方法确认不是伪无损。</li>
+<li><strong>安静环境：</strong>关掉系统 EQ 和 App 音效增强，选直通模式，音量调到舒适位置。</li>
+<li><strong>四首定基：</strong>蔡琴《被遗忘的时光》→ 判断中频会不会发薄发飘；童丽《枉凝眉》→ 判断齿音刺不刺耳；赵鹏《月光森林》→ 判断低频是干净有弹性还是轰头发闷；Meav《One I Love》→ 判断声场和残响。</li>
+<li><strong>A/B 对比：</strong>有条件就用两副耳机/两条音源交替听同一段，比单听更容易听出差别。</li>
+<li><strong>别迷信"神曲"：</strong>《加州旅馆》那类大动态录音测的是气势，不是日常听歌最常见的中频人声。四类人声都过一遍，判断才不偏。</li>
+</ol>
+
+<h2 id="s7">7. 发烧试音碟全解（惠威 / 雨林 / ABC / 龙源）</h2>
+<div class="warn"><strong>先说真相：</strong>"惠威试音碟"并不是惠威官方发行的专辑，而是九十年代音像店、碟商、发烧友接力编辑的<strong>共享歌单家族</strong>。惠威官方从未公开认领过任何一张"试音碟"，官方旗舰店也找不到在售产品；各版本曲目表互相冲突，连《渡口》排第几首都吵不清。同类还有雨林《试音宝典》、ABC《监听王 / 监听耳机天碟》、龙源天碟、《前后左右测试天碟》等，都是<strong>厂牌或发烧圈为测器材而编排的选曲合集</strong>，不是某位歌手的新专辑。</div>
+<div class="card">
+<p><strong>这直接影响下载：</strong>网上流传的 WAV+CUE / APE 网盘包，本质是把各唱片公司的商业录音（蔡琴、王菲、老鹰乐队、邓丽君等）重新打包，版权归各权利方，我不提供这类盗版链接。而像"火箭升空""正弦波扫频"这类纯测试音效，本身不是音乐作品，反而容易在网盘包里携带风险文件。</p>
+<p><strong>合法拿到的办法：</strong>试音碟的价值<strong>在选曲和排序，不在文件</strong>——这份选曲单可以合法复制。记住曲目和原唱歌手，去 QQ音乐 / 网易云 / Apple Music / 索尼精选逐首搜原版即可。下面把 9 张经典试音碟的完整曲目单整理出来，每首都带正版搜索入口。</p>
+</div>
+<div class="tip"><strong>怎么用它：</strong>别按顺序从头听到尾——按"测什么"挑。想测人声结像就听蔡琴《渡口》、黄红英《初次尝到寂寞》；想测高频齿音听童丽、陈洁丽；想测低频下潜听赵鹏、闫学敏《鼓诗》；想测声场听《加州旅馆》前奏、ABC 的人头录音。一张碟里真正有用的往往就 3-5 首。</div>
+<div id="hivi"></div>
+
+<footer>
+<p>数据来源：2026 年公开资料（发烧友社区试音清单、索尼精选 Hi-Rec 曲库、正版下载渠道横评、惠威试音碟版本考据）。曲目与专辑信息仅供检索参考，版权归各权利方所有。</p>
+<p>勾选状态仅保存在当前浏览器本地，不会上传。导出的播放列表为曲目名清单，需与你本地已合法获取的音乐文件配合使用。</p>
+</footer>
+</div>
+
+<script>
+const P = {
+  qq: q => 'https://y.qq.com/n/ryqq/search?w=' + encodeURIComponent(q),
+  wy: q => 'https://music.163.com/#/search/m/?s=' + encodeURIComponent(q),
+  ap: q => 'https://music.apple.com/cn/search?term=' + encodeURIComponent(q),
+  kg: q => 'https://www.kugou.com/search/?keyword=' + encodeURIComponent(q),
+  so: q => 'https://music.sonyselect.net/search?keyword=' + encodeURIComponent(q),
+  bc: q => 'https://bandcamp.com/search?q=' + encodeURIComponent(q)
+};
+function links(artist, title, album){
+  const q1 = artist + ' ' + title;
+  const q2 = artist + ' ' + album;
+  return '<a class="plat" target="_blank" href="' + P.qq(q1) + '">QQ</a>' +
+         '<a class="plat" target="_blank" href="' + P.wy(q1) + '">网易</a>' +
+         '<a class="plat" target="_blank" href="' + P.ap(q1) + '">Apple</a>' +
+         '<a class="plat" target="_blank" href="' + P.kg(q1) + '">酷狗</a>' +
+         '<a class="plat" target="_blank" href="' + P.so(q2) + '">索尼HiRes</a>';
+}
+
+const tracks = [
+// 醇厚中低频
+['醇厚中低频','蔡琴','被遗忘的时光','民歌蔡琴','开头清唱，测中频醇厚、气息与换气细节；发飘发薄即设备不合格','FLAC'],
+['醇厚中低频','蔡琴','渡口','民歌蔡琴','鼓点测低频下潜 + 人声结像，发烧圈头号标杆','FLAC'],
+['醇厚中低频','蔡琴','恰似你的温柔','民歌蔡琴','测老歌韵味与中频圆润度','FLAC'],
+['醇厚中低频','姚璎格','千千阙歌','粤韵','女中音，测中频密度与声音重量感，转音尾音细节丰富','FLAC'],
+['醇厚中低频','王闻','一生中最爱','男人四十','温暖松弛男声，测人声结像是否准确','FLAC'],
+['醇厚中低频','王闻','让一切随风','男人四十','测人声与伴奏分离度，长时间聆听不浑浊','FLAC'],
+['醇厚中低频','邓丽君','独上西楼','淡淡幽情','古诗词谱曲，嗓子巅峰状态，任何设备都耐听','FLAC'],
+['醇厚中低频','邓丽君','微风细雨','淡淡幽情','测中频细腻度与齿音控制','FLAC'],
+['醇厚中低频','陈佳','漫步人生路','似是故人来','声线近似邓丽君，测气息控制与咬字轻重','FLAC'],
+['醇厚中低频','钟明秋','似是故人来','似是故人来','清澈男声，中频顺滑不刺耳','FLAC'],
+['醇厚中低频','刘亮鹭','梅花三弄','江湖缘','温暖通透，测音场定位与人声距离感','FLAC'],
+['醇厚中低频','孙露','离别的秋天','寂寞情人','磁性慵懒女声，测情感细节与中频厚度','DSD/FLAC'],
+['醇厚中低频','Susan Wong','The Look of Love','Just a Little Bossa Nova','磁性中低音 + 原声乐器质地，有 24bit/96kHz 版','HiRes'],
+['醇厚中低频','Susan Wong','Kissing a Fool','A Night At The Movies','2026 新专，松弛声线还原电影旋律，HiRes 发行','HiRes'],
+['醇厚中低频','Diana Krall','The Look of Love','The Look of Love','爵士女声标杆，测中低频厚度与氛围','FLAC'],
+['醇厚中低频','Carla Kidd','爵士精选','爵士女声人声标杆碟','温润醇厚中低音，测结像、中频厚度与残响空间感','FLAC'],
+['醇厚中低频','降央卓玛','天边','金色的呼唤','天下最美女中音，测声场宽度与能量感','FLAC'],
+// 清亮高频
+['清亮高频','童丽','枉凝眉','古诗词遇见童丽','江南甜嗓带戏曲韵味，高频通透不刺，测齿音控制','FLAC'],
+['清亮高频','童丽','佳人曲','古诗词遇见童丽','清亮干净无杂质，测高频延伸','FLAC'],
+['清亮高频','童丽','寒傲似冰','对话II 古筝与童丽的故事','测人声与乐器分离度，古筝二胡位置清晰','FLAC'],
+['清亮高频','童丽','不装饰你的梦','零时十分','测高频细节与气息','FLAC'],
+['清亮高频','陈洁丽','亲密爱人','亲密爱人','清亮女声，测高频延伸与空气感','FLAC'],
+['清亮高频','常安','那些花儿','那些花儿','测高频透明度和细微泛音','FLAC'],
+['清亮高频','龚玥','走天涯','民歌红','清亮纯净，穿透力强，测音场能否拉开','FLAC'],
+['清亮高频','陈瑞','不想回家的女人','2015经典发烧碟','发烧版录音，测顺滑转音','FLAC'],
+['清亮高频','Meav','One I Love','Meav','无伴奏清唱，测人声还原与高频通透，任何音染都藏不住','FLAC'],
+['清亮高频','Eva Cassidy','Songbird','Songbird','嗓音干净到起鸡皮疙瘩，设备差一点就听不出好','FLAC'],
+['清亮高频','Radka Toneff','The Moon Is a Harsh Mistress','Fairytales','极致安静的现场录音，耳机党私藏','FLAC'],
+['清亮高频','Norah Jones','Come Away With Me','Come Away With Me','入门爵士人声首选，录音温润自然','FLAC'],
+['清亮高频','斯丹曼簇','烂透','鲜花与牛粪','2026 新专，清冷与锋利并存，测动态与音域张力','FLAC'],
+['清亮高频','吴琳珂','吴琳珂','吴琳珂','2026 独立女声首专，人声与旋律表现突出','FLAC'],
+['清亮高频','陈静琳','哪天的形状','哪天的形状','2026 新专，歌声光亮清澈，另类摇滚编制','FLAC'],
+['清亮高频','Helena Gao','我扫你','gao dan dan','2026 电音舞曲，测高频亮度与节奏控制','FLAC'],
+['清亮高频','LAWA','活着的副作用','活着的副作用','2026 优质流行女声新专辑','FLAC'],
+// 低频震撼
+['低频震撼','赵鹏','月光森林','人声低音炮','男低音天花板，开头低音测下潜与弹性，发闷即设备低频不合格','FLAC'],
+['低频震撼','赵鹏','船歌','人声低音炮1 闪亮的日子','低频质感与干净度，不糊不闷','FLAC'],
+['低频震撼','赵鹏','女人花','低音王朝I','测低频与中频衔接','FLAC'],
+['低频震撼','赵鹏','橄榄树','低音共鸣','测低频下潜层次','FLAC'],
+['低频震撼','赵鹏','乌兰巴托的夜晚','低音共鸣','测低频氛围与声音重量','FLAC'],
+['低频震撼','赵鹏','被遗忘的时光','低音王 人声低音测试','男声版，测低频与中频平衡','FLAC'],
+['低频震撼','孙露','平凡之路','寂寞情人','测人声能量感与低频层次','DSD/FLAC'],
+['低频震撼','孙露','车站','试音孙露 DSD','DSD 录音，测低频与细节密度','DSD'],
+['低频震撼','雷婷','恋曲1990','婷婷醉歌','测低频量感与不轰头','FLAC'],
+['低频震撼','雷婷','别哭我最爱的人','离开并非我愿意','测中低频厚度','FLAC'],
+['低频震撼','张玮伽','挪威的森林','世界如此寂寞','测低频控制力与人声分离','FLAC'],
+['低频震撼','刘芳','飘洋过海来看你','声声醉2','柔情女声，测中低频顺滑度','FLAC'],
+['低频震撼','低音王','当你老了','低音王','低频专用试音，测下潜深度','FLAC'],
+['低频震撼','王闻','一生中最爱','男人四十','中频密度高，测低频衬托是否自然','FLAC'],
+['低频震撼','钟明秋','一生何求','奔向你','细腻温柔，测中低频不浑浊','FLAC'],
+// 空灵声场
+['空灵声场','王菲','天空','天空','华语声场标杆，测高音透明度、空气感和空间残响','FLAC'],
+['空灵声场','黄莺莺','葬心','葬心','测高音透明度与空间残响','FLAC'],
+['空灵声场','Meav','One I Love','Meav','清唱配空间残响，测声场的自然度','FLAC'],
+['空灵声场','蔡琴','被遗忘的时光','民歌蔡琴','换一个角度听空间感，与人声结像对照','FLAC'],
+['空灵声场','陈粒','如也','如也','创作完整度与声场层次，华语独立经典','FLAC'],
+['空灵声场','许志安','人与人之间','人与人之间','2026 粤语专辑，测叙事空间与情感层次','FLAC'],
+['空灵声场','Hugowave','蓝色深处','蓝色深处','2026 唱作专辑，声场 Like 电影配乐，测氛围还原','FLAC'],
+['空灵声场','莫西子诗','芸芸','2026 民谣专辑','尾曲群像，测空间纵深与人声位置','FLAC'],
+['空灵声场','斯丹曼簇','鲜花与牛粪','鲜花与牛粪','2026 新专，测声场宽度与动态余量','FLAC'],
+['空灵声场','Susan Wong','Emotion','Just a Little Bossa Nova','近乎清唱处理，测空间感与松弛度','HiRes'],
+['空灵声场','Eva Cassidy','Over the Rainbow','Songbird','现场氛围感，测残响与空气感','FLAC'],
+['空灵声场','Radka Toneff','Fairytales','Fairytales','极致安静，测微细节与空间还原','FLAC']
+];
+
+const albums = [
+['蔡琴','民歌蔡琴','1996','华语老歌','🔴 人声标杆，中频醇厚，发烧圈常驻试音碟','FLAC','https://y.qq.com/'],
+['邓丽君','淡淡幽情','1983','华语经典','古诗词谱曲，嗓子巅峰，耐听度极高','FLAC','https://music.apple.com/cn/browse'],
+['王菲','天空','1994','华语流行','声场与空气感标杆，高音透明度试音必用','FLAC','https://y.qq.com/'],
+['陈粒','如也','2015','独立女声','创作完整度与人声表现力至今难超越','FLAC','https://music.163.com/'],
+['赵鹏','人声低音炮','2005','男低音','🔴 低频试音教科书，男低音下潜天花板','FLAC','https://www.kugou.com/'],
+['姚璎格','粤韵','近年','女中音','复古黑胶味，中频密度与转音细节拉满','FLAC','https://y.qq.com/'],
+['童丽','零时十分','近年','清亮女声','高频通透不刺耳，测齿音控制首选','FLAC','https://music.163.com/'],
+['孙露','寂寞情人','近年','发烧女声','磁性慵懒，录音质量稳定，放松耐听','DSD/FLAC','https://www.kugou.com/'],
+['王闻','男人四十','近年','温暖男声','中频密度高、结像准，长时间聆听舒服','FLAC','https://y.qq.com/'],
+['黄莺莺','葬心','1991','华语经典','空间残响与高音透明度标杆','FLAC','https://music.apple.com/cn/browse'],
+['Susan Wong','Just a Little Bossa Nova','2026 再版','爵士/Bossa','🔴 磁性中低音，24bit/96kHz 真 HiRes','HiRes','https://music.sonyselect.net/'],
+['Susan Wong','A Night At The Movies','2026-09','爵士人声','电影经典翻唱，松弛声线，HiRes 发行','HiRes','https://music.sonyselect.net/'],
+['Norah Jones','Come Away With Me','2002','爵士流行','入门爵士人声首选，录音温润','FLAC','https://music.apple.com/cn/browse'],
+['Eva Cassidy','Songbird','1998','爵士/民谣','嗓音干净，细节丰富，设备差就听不出好','FLAC','https://www.qobuz.com/'],
+['Diana Krall','The Look of Love','2001','爵士','中低频厚度与爵士氛围标准','FLAC','https://www.qobuz.com/'],
+['Radka Toneff','Fairytales','1982','挪威爵士','极致安静的现场录音，耳机党私藏','FLAC','https://bandcamp.com/'],
+['Carla Kidd','爵士女声精选','—','爵士','人声结像、中频厚度与残响空间感标杆碟','FLAC','https://www.hdtracks.com/'],
+['Meav','One I Love','1997','凯尔特','无伴奏清唱，测人声还原极限','FLAC','https://www.qobuz.com/'],
+['斯丹曼簇','鲜花与牛粪','2026-09','华语流行','音域张力极大，清透又锋利，测动态','FLAC','https://music.163.com/'],
+['吴琳珂','吴琳珂','2026-10','独立女声','首张创作专辑，人声与旋律突出','FLAC','https://music.163.com/'],
+['许志安','人与人之间','2026-10','粤语','自愈叙事线，粤语情感表达细腻','FLAC','https://music.apple.com/cn/browse'],
+['陈静琳','哪天的形状','2026-09','独立女声','清亮歌声配另类摇滚，安静时很舒服','FLAC','https://bandcamp.com/'],
+['Hugowave','蓝色深处','2026-09','艺术流行','声场像电影配乐，测氛围还原','FLAC','https://bandcamp.com/'],
+['莫西子诗','2026 民谣专辑','2026-09','民谣','自然人文题材，测空间纵深','FLAC','https://music.163.com/'],
+['LAWA','活着的副作用','2026-09','流行女声','优质流行女声新专辑','FLAC','https://music.163.com/'],
+['Helena Gao','gao dan dan','2026-09','电音舞曲','测高频亮度与节奏控制','FLAC','https://music.apple.com/cn/browse']
+];
+
+// 发烧试音碟曲目：[碟名, 曲目, 演绎者, 测什么]
+const hiviDiscs = [
+// CD1 惠威 T200A 试音碟
+['惠威 T200A 试音碟 (CD1)','两千年等一次','Smile','早期华语女声，测中频圆润与年代录音质感'],
+['惠威 T200A 试音碟 (CD1)','天堂','腾格尔','嗓音爆发力，测动态余量与中低频能量'],
+['惠威 T200A 试音碟 (CD1)','哭砂','黄莺莺','高音透明度与空间残响标杆'],
+['惠威 T200A 试音碟 (CD1)','The Police','The Police','欧美摇滚，测节奏与乐器分离'],
+['惠威 T200A 试音碟 (CD1)','Going Home','Kenny G','萨克斯，测中频质感与气息细节'],
+['惠威 T200A 试音碟 (CD1)','拉德斯基进行曲','卡拉扬','交响大动态，测声场宽度与瞬态'],
+['惠威 T200A 试音碟 (CD1)','渡口','蔡琴','🔴 头号标杆，前奏鼓点测低频下潜、人声结像'],
+['惠威 T200A 试音碟 (CD1)','加州旅馆','老鹰乐队','测声场与乐器定位，注意是现场版非录音室版'],
+['惠威 T200A 试音碟 (CD1)','One I Love','Meav','无伴奏清唱，测人声还原极限'],
+['惠威 T200A 试音碟 (CD1)','葬心','黄莺莺','高音透明与残响，电影配乐氛围'],
+['惠威 T200A 试音碟 (CD1)','偏偏喜欢你','区瑞强','粤语男声，测中频厚度与咬字'],
+['惠威 T200A 试音碟 (CD1)','Let It Flow','Toni Braxton','欧美女声，测中低频密度'],
+['惠威 T200A 试音碟 (CD1)','月亮代表我的心','欧瑞强','男声翻唱，测人声自然度'],
+['惠威 T200A 试音碟 (CD1)','恰似你的温柔','蔡琴','测老歌韵味与中频圆润'],
+['惠威 T200A 试音碟 (CD1)','伤痕','林忆莲','粤语女声情感层次与齿音'],
+['惠威 T200A 试音碟 (CD1)','柏林恋人','Kari Bremnes','挪威爵士女声，测微细节与残响空间'],
+// CD2 惠威人声试音碟
+['惠威人声试音碟 (CD2)','月光小夜曲','蔡琴','🔴 开头清唱，测气息、换气与中频醇厚'],
+['惠威人声试音碟 (CD2)','初次尝到寂寞','黄红英','女高音清亮通透，测高频延伸不刺'],
+['惠威人声试音碟 (CD2)','One I Love','Sarah Brightman','美声版，测声场与嗓音光泽'],
+['惠威人声试音碟 (CD2)','往事如昔','刘亮鹭','温暖男声，测中频顺滑与距离感'],
+['惠威人声试音碟 (CD2)','夜色','玉置浩二','日系男声，测氛围与低频质感'],
+['惠威人声试音碟 (CD2)','情人的眼泪','杨小林','女声情感细节，测齿音控制'],
+['惠威人声试音碟 (CD2)','月亮代表我的心','赵鹏','男低音版，测低频下潜与弹性'],
+['惠威人声试音碟 (CD2)','眼神骗不过','罗敏庄','粤语女声，测结像与咬字'],
+['惠威人声试音碟 (CD2)','风继续吹','刘雅丽','粤语翻唱，测人声厚度'],
+['惠威人声试音碟 (CD2)','挥着翅膀的女孩','杨曼莉','清亮女声，测高频透明度'],
+['惠威人声试音碟 (CD2)','泪海','何玉玲','女声情感，测中频密度'],
+['惠威人声试音碟 (CD2)','相思河畔','区瑞强','民谣男声，测伴奏与人声分离'],
+['惠威人声试音碟 (CD2)','天空','王菲','🔴 华语声场标杆，测高音空气感与残响'],
+// CD3 惠威试音碟1
+['惠威试音碟 1 (CD3)','雪花飞扬','郭峰','电子合成乐，测高频亮度与动态'],
+['惠威试音碟 1 (CD3)','试音方程式','女声清唱','纯人声测试，测还原度'],
+['惠威试音碟 1 (CD3)','Shania','Fuain','欧美流行，测声场'],
+['惠威试音碟 1 (CD3)','渡口','蔡琴','重复收录，不同母带可对比'],
+['惠威试音碟 1 (CD3)','达坂城姑娘','八只眼','男声合唱，测声场与和声层次'],
+['惠威试音碟 1 (CD3)','加州旅店','老鹰乐队','现场版，测定位与观众声残响'],
+['惠威试音碟 1 (CD3)','鼓诗','闫学敏','🔴 打击乐，测低频冲击与瞬态'],
+['惠威试音碟 1 (CD3)','红灯记','京剧女声','戏曲人声，测高频穿透与齿音'],
+['惠威试音碟 1 (CD3)','张三的歌','蔡琴','中频醇厚，测人声自然'],
+['惠威试音碟 1 (CD3)','低音王','低音提琴','测超低频下潜'],
+['惠威试音碟 1 (CD3)','Denon','管弦乐','厂商测试曲，测动态与分离度'],
+['惠威试音碟 1 (CD3)','波罗吉他','器乐','吉他拨弦，测中高频细节'],
+['惠威试音碟 1 (CD3)','琵琶对萨克斯','器乐','两种乐器对位，测结像定位'],
+['惠威试音碟 1 (CD3)','黄河的水干了','腾格尔','男声爆发力与情绪张力'],
+['惠威试音碟 1 (CD3)','穆特小提琴 1/4','穆特','小提琴泛音，测高频顺滑不刺'],
+['惠威试音碟 1 (CD3)','One I Love','女声清唱','测清唱人声还原'],
+['惠威试音碟 1 (CD3)','葬心','黄莺莺','测残响空间'],
+['惠威试音碟 1 (CD3)','高山流水','古筝','古筝颗粒感，测中高频解析'],
+['惠威试音碟 1 (CD3)','梁祝','小提琴','协奏曲，测乐器分离与动态'],
+['惠威试音碟 1 (CD3)','发烧经典','交响乐','综合大动态'],
+['惠威试音碟 1 (CD3)','古琴对唢呐','民族乐器','两种民乐对位，测定位'],
+['惠威试音碟 1 (CD3)','狩猎波尔卡','交响乐','快速音群，测瞬态与声场'],
+['惠威试音碟 1 (CD3)','偏偏喜欢你','区瑞强','粤语男声，测中频'],
+['惠威试音碟 1 (CD3)','山高水远','DTS 音乐','多声道测试，测环绕效果'],
+// CD4 惠威试音碟2
+['惠威试音碟 2 (CD4)','2001 太空漫游','交响乐','大编制开场，测动态对比'],
+['惠威试音碟 2 (CD4)','欢乐颂','女声','合唱人声，测声场宽度'],
+['惠威试音碟 2 (CD4)','步步高','古筝','民乐高频，测颗粒与速度'],
+['惠威试音碟 2 (CD4)','午夜梦回','电吉他','吉他质感，测中高频'],
+['惠威试音碟 2 (CD4)','普通一兵','管弦乐','动态与分离度'],
+['惠威试音碟 2 (CD4)','山丹丹开花红艳艳','民乐合奏','民族器乐层次'],
+['惠威试音碟 2 (CD4)','四季之歌','古提琴','弦乐泛音'],
+['惠威试音碟 2 (CD4)','卡门前奏曲','小号','铜管高频，测是否刺耳'],
+['惠威试音碟 2 (CD4)','送别','女声合唱','童声/女声，测纯净度'],
+['惠威试音碟 2 (CD4)','敲击卡门','敲击乐','🔴 打击乐瞬态与高频'],
+['惠威试音碟 2 (CD4)','布兰诗歌','合唱','大动态合唱，测声场纵深'],
+['惠威试音碟 2 (CD4)','屋顶上的提琴手','小提琴','弦乐细节'],
+['惠威试音碟 2 (CD4)','街头月','电子乐器','电子合成，测低频'],
+['惠威试音碟 2 (CD4)','热情奏鸣曲','钢琴','钢琴琴槌质感与动态'],
+['惠威试音碟 2 (CD4)','亲爱的爸爸','女高音','美声女高音，测高频穿透'],
+['惠威试音碟 2 (CD4)','今夜无人入睡','男高音','男高音，测声场与能量'],
+['惠威试音碟 2 (CD4)','生死时速主题曲','电影音乐','影视配乐，测氛围',],
+['惠威试音碟 2 (CD4)','F-16 战斗机 / 龙卷风暴 / 火箭升空','效果音','⚠️ 纯测试音效，非音乐作品，注意音量'],
+// CD5 惠威试音碟3
+['惠威试音碟 3 (CD5)','牧人','德德玛','女中音，测中低频厚度'],
+['惠威试音碟 3 (CD5)','知音','古筝','民乐高频'],
+['惠威试音碟 3 (CD5)','干杯，朋友','刘亮鹭','男声，测中频顺滑'],
+['惠威试音碟 3 (CD5)','南海姑娘','王菲','早期录音，测声场与透明度'],
+['惠威试音碟 3 (CD5)','船歌','赵鹏','男低音，测低频下潜'],
+['惠威试音碟 3 (CD5)','梁祝','小提琴','协奏曲，测乐器定位'],
+['惠威试音碟 3 (CD5)','濑柳小镇','木村好夫','吉他，测中高频细节'],
+['惠威试音碟 3 (CD5)','让我们荡起双桨','黑鸭子','和声，测声场层次'],
+['惠威试音碟 3 (CD5)','加州旅馆','老鹰乐队','现场版，测定位'],
+['惠威试音碟 3 (CD5)','高山流水','古筝','古筝颗粒感'],
+['惠威试音碟 3 (CD5)','跟着感觉走','古璇','女声，测中频'],
+['惠威试音碟 3 (CD5)','一意孤行','刘星','新世纪音乐，测氛围与低频'],
+['惠威试音碟 3 (CD5)','映山红','青燕子演唱组','女声合唱，测声场'],
+// 雨林试音宝典
+['雨林《试音宝典 A2HD3》','孤独的牧羊人','青燕子演唱组','女声合唱，测声场与和声'],
+['雨林《试音宝典 A2HD3》','十送红军','许岚岚','女声，测中频与情感'],
+['雨林《试音宝典 A2HD3》','茉莉花','青燕子演唱组','经典民歌，测人声纯度'],
+['雨林《试音宝典 A2HD3》','深情相拥','许栾 / 常安','男女对唱，测人声分离'],
+['雨林《试音宝典 A2HD3》','闲聊波尔卡','木管三重奏','木管，测高频与分离度'],
+['雨林《试音宝典 A2HD3》','最爱','陈洁丽','🔴 清亮女声，测齿音控制与高频延伸'],
+['雨林《试音宝典 A2HD3》','走西口','许岚岚','民族唱腔，测高频穿透'],
+['雨林《试音宝典 A2HD3》','少女的祈祷','陈洁丽','钢琴伴奏人声，测层次'],
+['雨林《试音宝典 A2HD3》','送别','黄江琴','二胡/器乐，测中频质感'],
+['雨林《试音宝典 A2HD3》','菊花台','何绮艾','流行翻唱，测人声细节'],
+// ABC 监听耳机天碟
+['ABC《监听耳机天碟》','皇家进行曲','斯特拉文斯基','大编制，测动态'],
+['ABC《监听耳机天碟》','即兴幻想曲','肖邦','钢琴，测琴槌质感'],
+['ABC《监听耳机天碟》','某处某人','亚伦·奈维尔','男声，测中频醇厚'],
+['ABC《监听耳机天碟》','庄尼的长袍','蕾贝卡·碧瑾','爵士女声，测氛围'],
+['ABC《监听耳机天碟》','难忘的初恋情人','邓丽君','经典人声，测中频细腻'],
+['ABC《监听耳机天碟》','旅伴','木村好夫','吉他，测中高频细节'],
+['ABC《监听耳机天碟》','G 大调第一小提琴奏鸣曲','罗西尼','弦乐，测泛音'],
+['ABC《监听耳机天碟》','图画展览会选曲','穆索尔斯基','管弦乐，测声场'],
+['ABC《监听耳机天碟》','赫底拉','波尼阿组合','男低音，测下潜'],
+['ABC《监听耳机天碟》','罗西的摇篮曲','诺拉·琼斯','爵士女声，测松弛感'],
+['ABC《监听耳机天碟》','单色','日本太鼓','🔴 打击乐，测低频冲击'],
+['ABC《监听耳机天碟》','快乐时光','布兰诗歌','合唱，测声场'],
+// ABC 监听王 II
+['ABC《监听王 II》XRCD','弥撒','合唱','大动态、低频与合唱层次'],
+['ABC《监听王 II》XRCD','你照亮我的生命','塞勒娜·琼斯','爵士女声，测中频厚度与齿音'],
+['ABC《监听王 II》XRCD','旋律','丹尼尔·盖德','真空管小提琴，测泛音与高频延伸'],
+['ABC《监听王 II》XRCD','排练现场','人头录音','🔴 360° 人头录音，测结像与空间定位'],
+['ABC《监听王 II》XRCD','打击乐即兴','人头录音','测分离度与空间层次'],
+// 龙源天碟
+['龙源《天碟》','遇情','雨天','疗伤男声，测中频情感'],
+['龙源《天碟》','细说往事','小娟 & 山谷里的居民','民谣，测自然音色'],
+['龙源《天碟》','情迷唐古拉','米线','民族女声，测高频通透'],
+['龙源《天碟》','敖包的美丽','老牛','男声，测中低频'],
+// 前后左右测试天碟
+['《前后左右测试天碟》','左右声道相位测试','测试信号','🔴 左右同响应变弱即接错正负极'],
+['《前后左右测试天碟》','鼓诗（左右定位）','打击乐','测左右鼓组定位'],
+['《前后左右测试天碟》','大峡谷组曲','管弦乐','测前后声场层次'],
+['《前后左右测试天碟》','1812 序曲炮声','柴可夫斯基','测低频冲击与动态'],
+['《前后左右测试天碟》','梁祝（前后定位）','小提琴','测乐器前后定位'],
+['《前后左右测试天碟》','阿姐鼓','朱哲琴','测低频与空间感'],
+['《前后左右测试天碟》','32Hz 正弦波','测试信号','听得到且无共振=低音炮调校合格']
+];
+
+const KEY = 'vocal-playlist-checked-v1';
+let checked = {};
+try { checked = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { checked = {}; }
+
+function renderTracks(){
+  const groups = {};
+  tracks.forEach(t => { (groups[t[0]] = groups[t[0]] || []).push(t); });
+  let html = '';
+  Object.keys(groups).forEach(g => {
+    html += '<h3><span class="dim">' + g + '</span> <span style="color:var(--muted);font-size:12px">· ' + groups[g].length + ' 首</span></h3>';
+    html += '<table><thead><tr><th style="width:26px"></th><th>曲目 / 歌手</th><th>专辑</th><th>测什么</th><th>音源档</th><th class="noiprint">正版入口</th></tr></thead><tbody>';
+    groups[g].forEach((t, i) => {
+      const id = g + '|' + t[1] + '|' + t[2];
+      html += '<tr id="r' + i + '" class="' + (checked[id] ? 'done' : '') + '">' +
+        '<td><input type="checkbox" ' + (checked[id] ? 'checked' : '') + ' onchange="toggle(\'' + id.replace(/'/g, "\\'") + '\',this)" aria-label="标记已试听"></td>' +
+        '<td><strong>' + t[2] + '</strong><br><span style="color:var(--muted)">' + t[1] + '</span></td>' +
+        '<td>' + t[3] + '</td>' +
+        '<td>' + t[4] + '</td>' +
+        '<td>' + t[5] + '</td>' +
+        '<td class="noiprint">' + links(t[1], t[2], t[3]) + '</td>' +
+        '</tr>';
+    });
+    html += '</tbody></table>';
+  });
+  document.getElementById('tracks').innerHTML = html;
+  document.getElementById('tot').textContent = tracks.length;
+  updateCount();
+}
+
+function renderAlbums(){
+  let html = '<table><thead><tr><th>歌手</th><th>专辑</th><th>年份</th><th>风格</th><th>为什么值得听</th><th>音源档</th><th class="noiprint">直达</th></tr></thead><tbody>';
+  albums.forEach(a => {
+    html += '<tr><td>' + a[0] + '</td><td><strong>' + a[1] + '</strong></td><td>' + a[2] + '</td><td>' + a[3] + '</td><td>' + a[4] + '</td><td>' + a[5] + '</td>' +
+      '<td class="noiprint"><a class="dl" target="_blank" href="' + a[6] + '">去搜索</a> <a class="plat" target="_blank" href="' + P.ap(a[0] + ' ' + a[1]) + '">Apple</a></td></tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('albums').innerHTML = html;
+}
+
+function renderHivi(){
+  const groups = {};
+  hiviDiscs.forEach(t => { (groups[t[0]] = groups[t[0]] || []).push(t); });
+  let html = '<p>共 9 组、' + hiviDiscs.length + ' 条选曲。曲目可逐首搜索正版原版；纯测试信号（正弦波、战机音效等）不是音乐作品，仅作器材测试用。</p>';
+  Object.keys(groups).forEach(g => {
+    html += '<h3><span class="dim">' + g + '</span> <span style="color:var(--muted);font-size:12px">· ' + groups[g].length + ' 首</span></h3>';
+    html += '<table><thead><tr><th>曲目</th><th>演绎者</th><th>测什么</th><th class="noiprint">正版搜索</th></tr></thead><tbody>';
+    groups[g].forEach(t => {
+      html += '<tr><td><strong>' + t[1] + '</strong></td><td>' + t[2] + '</td><td>' + t[3] + '</td>' +
+        '<td class="noiprint">' + links(t[2], t[1], g) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+  });
+  document.getElementById('hivi').innerHTML = html;
+}
+
+function toggle(id, el){
+  checked[id] = el.checked;
+  if (!el.checked) delete checked[id];
+  localStorage.setItem(KEY, JSON.stringify(checked));
+  el.closest('tr').className = el.checked ? 'done' : '';
+  updateCount();
+}
+function updateCount(){ document.getElementById('cnt').textContent = Object.keys(checked).length; }
+function resetAll(){
+  if (!confirm('确定清空所有试听标记？')) return;
+  checked = {}; localStorage.setItem(KEY, '{}'); renderTracks();
+}
+function exportList(){
+  const lines = ['人声试音歌单 · 已试听清单', '导出时间：' + new Date().toLocaleString(), ''];
+  const groups = {};
+  tracks.forEach(t => { (groups[t[0]] = groups[t[0]] || []).push(t); });
+  Object.keys(groups).forEach(g => {
+    const picked = groups[g].filter(t => checked[g + '|' + t[1] + '|' + t[2]]);
+    if (!picked.length) return;
+    lines.push('【' + g + '】');
+    picked.forEach(t => lines.push('  ' + t[2] + ' - ' + t[1] + '  (' + t[3] + ')'));
+    lines.push('');
+  });
+  if (lines.length <= 3) lines.push('（还没有勾选任何曲目）');
+  const blob = new Blob(['\ufeff' + lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '人声试音清单.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+renderTracks();
+renderAlbums();
+renderHivi();
+</script>
+</body>
+</html>

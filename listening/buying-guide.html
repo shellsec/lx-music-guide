@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>耳机与音箱选购 | 听音指南</title>
+<style>
+:root{
+  --bg:#f7f8fa; --card:#ffffff; --ink:#1f2430; --muted:#5f6775; --line:#e3e6eb;
+  --blue:#185fa5; --blue-bg:#e6f1fb; --green:#0f6e56; --green-bg:#e1f5ee;
+  --amber:#854f0b; --amber-bg:#faeeda; --red:#a32d2d; --red-bg:#fcebeb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.7}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 80px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:48px 0 36px;margin-bottom:32px}
+header .wrap{padding-bottom:0}
+h1{font-size:30px;margin:0 0 8px;font-weight:600;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:15px;margin:0}
+.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--blue-bg);color:var(--blue)}
+.tag.g{background:var(--green-bg);color:var(--green)}
+.tag.a{background:var(--amber-bg);color:var(--amber)}
+h2{font-size:21px;margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--ink);font-weight:600}
+h3{font-size:16px;margin:24px 0 10px;font-weight:600}
+p{margin:10px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin:16px 0}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.toc a{display:block;padding:8px 12px;background:var(--bg);border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px}
+.toc a:hover{background:var(--blue-bg);color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;background:#fff;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;min-width:80px}
+th{background:#f0f3f7;font-weight:600;white-space:nowrap}
+tr:nth-child(even) td{background:#fafbfc}
+.p0{color:var(--red);font-weight:600}
+.p1{color:var(--amber);font-weight:600}
+.p2{color:var(--green);font-weight:600}
+.note{border-left:4px solid var(--blue);background:var(--blue-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:4px solid var(--red);background:var(--red-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.tip{border-left:4px solid var(--green);background:var(--green-bg);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.ladder{margin:18px 0}
+.rung{display:flex;align-items:center;gap:16px;padding:12px 16px;margin-bottom:8px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.rung.best{border:2px solid var(--blue);background:var(--blue-bg)}
+.rung .price{flex:0 0 120px;font-weight:600;font-size:15px}
+.rung .level{flex:0 0 150px;font-weight:600}
+.rung .desc{color:var(--muted);font-size:13px}
+.chain{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:16px 0}
+.chain .step{flex:1 1 130px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.chain .step.hot{border:2px solid var(--blue);background:var(--blue-bg)}
+.chain .step b{display:block;font-size:14px}
+.chain .step span{font-size:12px;color:var(--muted)}
+.chain .arrow{align-self:center;color:var(--muted);font-size:18px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:16px 0}
+.steps li{counter-increment:s;position:relative;padding:12px 16px 12px 52px;margin-bottom:10px;background:#fff;border:1px solid var(--line);border-radius:10px}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:12px;width:24px;height:24px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+code{background:#f0f3f7;padding:1px 5px;border-radius:4px;font-size:13px}
+@media print{body{background:#fff}header{padding:16px 0}h2{page-break-after:avoid}table{page-break-inside:avoid}.card{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="listening.css">
+</head>
+<body>
+<nav class="listening-nav noiprint" aria-label="听音指南导航"><div><a href="../index.html#listening">音乐资源指南</a><a href="audio-basics.html">音质与设备入门</a><a href="bluetooth-help.html">蓝牙连接与排查</a><a href="buying-guide.html" aria-current="page">耳机与音箱选购</a><a href="world-audio-awards.html">年度耳机与音响奖项</a><a href="headphone-tests.html">耳机评测实战</a><a href="vocal-playlist.html">人声试音歌单</a></div></nav>
+<header>
+  <div class="wrap">
+    <h1>耳机与音箱选购</h1>
+    <p class="sub">分级分类 · 功能拆解 · 品牌与参考价格 · 音源匹配 · 华强北避坑 · 小白落地方案</p>
+    <div class="meta">
+      <span class="tag">版本 2026-11</span>
+      <span class="tag g">面向：听歌为主的小白</span>
+      <span class="tag a">价格均为网络公开参考价，以下单页为准</span>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+<div class="card">
+  <h3 style="margin-top:0">目录</h3>
+  <div class="toc">
+    <a href="#s1">1. 一句话结论</a>
+    <a href="#s2">2. 形态分类</a>
+    <a href="#s3">3. 功能拆解（含降噪）</a>
+    <a href="#s4">4. 价格分级阶梯</a>
+    <a href="#s5">5. 品牌型号与参考价格</a>
+    <a href="#s6">6. 华强北梯队与避坑</a>
+    <a href="#s7">7. 音源与编解码匹配</a>
+    <a href="#s8">8. 三步决策法</a>
+    <a href="#s9">9. 三套落地配置</a>
+    <a href="#s10">10. 术语速查</a>
+  </div>
+</div>
+
+<h2 id="s1">1. 一句话结论</h2>
+<div class="tip">
+<strong>听歌为主、要降噪的小白：直接锁定 300-800 元、带 ANC + LDAC/LHDC 的品牌真无线耳机。</strong>
+想先搞清"音质到底是什么"：花 100 元左右买条有线 HiFi 入门塞。华强北要玩就买正品芯片（1562AE 约 260 元最稳，1571AM 约 300 元功能最全），别信低价"顶配"神话。
+</div>
+<table>
+<thead><tr><th>优先级</th><th>原则</th><th>原因</th></tr></thead>
+<tbody>
+<tr><td class="p0">🔴 P0</td><td>先定场景和形态，再挑品牌</td><td>形态决定隔音、佩戴和音质上限，品牌只是同形态里的选择</td></tr>
+<tr><td class="p0">🔴 P0</td><td>300-800 元是甜区</td><td>这个档位才同时买得到像样的 ANC 和解码支持</td></tr>
+<tr><td class="p0">🔴 P0</td><td>确认手机支持的编码</td><td>iPhone 只有 AAC；安卓旗舰才有 LDAC/LHDC，否则高规格白买</td></tr>
+<tr><td class="p1">🟡 P1</td><td>关掉系统 EQ 与 App 音效叠加</td><td>三层音效叠加会篡改波形，导致失真</td></tr>
+<tr><td class="p2">🟢 P2</td><td>空间音频、头部追踪</td><td>锦上添花，需要音源和耳机同时支持</td></tr>
+</tbody>
+</table>
+
+<h2 id="s2">2. 形态分类</h2>
+<table>
+<thead><tr><th>形态</th><th>隔音 / 佩戴</th><th>音质潜力</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>入耳式（带耳塞）</td><td>被动隔音最好，久戴可能胀耳</td><td>低频扎实，上限高</td><td>🔴 通勤、认真听歌</td></tr>
+<tr><td>半入耳</td><td>不堵耳、隔音一般</td><td>低频易漏，人声清</td><td>办公久戴、怕闷</td></tr>
+<tr><td>耳夹 / 开放式 / 骨传导</td><td>不入耳，能听环境音</td><td>低频弱、细节一般</td><td>运动、骑车</td></tr>
+<tr><td>头戴式</td><td>包裹好、体积大</td><td>声场最宽</td><td>在家、长途飞机</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>关键认知：</strong>同价位下，有线耳机的解析力和三频均衡通常优于无线；无线多花的钱主要买的是 ANC、编解码芯片、电池和生态，而不是音质本身。</div>
+
+<h2 id="s3">3. 功能拆解（含降噪）</h2>
+<table>
+<thead><tr><th>功能</th><th>能力边界（大白话）</th><th>值不值</th></tr></thead>
+<tbody>
+<tr><td><strong>ANC 主动降噪</strong></td><td>发反向声波抵消噪音。对引擎、空调这类<strong>低频稳态</strong>噪音很强；对人声、键盘这类突发高频基本没辙。深度约 30-45dB，半入耳结构物理隔音有上限</td><td class="p0">🔴 通勤必选</td></tr>
+<tr><td>通透模式</td><td>麦克风把环境音放进来，不摘耳机也能对话</td><td class="p1">🟡 办公有用</td></tr>
+<tr><td>空间音频 / 头部追踪</td><td>算法伪造环绕声，需音源支持（如杜比全景声），耳机内要有陀螺仪</td><td class="p2">🟢 锦上添花</td></tr>
+<tr><td>延迟</td><td>普通 TWS 约 150-220ms；游戏款 / aptX LL 约 40ms；有线 &lt;5ms。超过 70ms 看视频会音画不同步</td><td class="p0">🔴 看视频/游戏必看</td></tr>
+<tr><td>续航</td><td>TWS 单次 5-11 小时；头戴 20-40 小时。锂电池 2-3 年老化，无线整机寿命约 2-3 年</td><td class="p1">🟡 头戴更耐用</td></tr>
+<tr><td>防水</td><td>IPX4 防汗，IPX5/6 防泼溅；<strong>都不能游泳</strong>，别把防泼溅当浸泡</td><td class="p1">🟡 运动才看</td></tr>
+<tr><td>编解码</td><td>决定音质天花板：iPhone 只有 AAC，安卓旗舰才上 LDAC/LHDC/aptX Lossless</td><td class="p0">🔴 音质党必看</td></tr>
+</tbody>
+</table>
+<div class="warn"><strong>最常见的坑：</strong>把"降噪"当成"音质"的代名词。加 ANC 会占用成本，300 元以下很多"主动降噪"只是营销话术。降噪买的是安静，不是好听。</div>
+
+<h2 id="s4">4. 价格分级阶梯</h2>
+<div class="ladder">
+  <div class="rung"><div class="price">0-100 元</div><div class="level">听个响</div><div class="desc">白牌 / 华强北低配 · 无有效降噪 · 仅 SBC；例外：百元有线 HiFi 入门塞音质能越级</div></div>
+  <div class="rung"><div class="price">100-300 元</div><div class="level">入门甜点</div><div class="desc">品牌入门 TWS（扎实连接）· HiFi 入门有线 · AAC；ANC 多为基础水平</div></div>
+  <div class="rung best"><div class="price">300-800 元</div><div class="level">主力甜区 · 最推荐</div><div class="desc">真 ANC 25-45dB · LDAC/LHDC · 通透 · App EQ · IPX4/5，音质与功能兼得</div></div>
+  <div class="rung"><div class="price">800-2000 元</div><div class="level">进阶</div><div class="desc">旗舰降噪 · 空间音频 / 头部追踪 · 高码率编码 · 可换线 HiFi</div></div>
+  <div class="rung"><div class="price">2000 元以上</div><div class="level">发烧</div><div class="desc">顶级降噪 / HiFi 旗舰；必须搭配好音源与安静环境才能体现价值</div></div>
+</div>
+
+<h2 id="s5">5. 品牌型号与参考价格</h2>
+<p>以下为 2026 年 11 月网络公开渠道参考价，促销波动较大，仅用于定位档位。</p>
+
+<h3>5.1 真无线（TWS）</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>形态</th><th>关键功能</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>OPPO Enco Air4</td><td>¥95-135</td><td>半入耳</td><td>IPX4、无 ANC</td><td>百元备用、半入耳入门</td></tr>
+<tr><td>水月雨 布丁</td><td>约 ¥199</td><td>入耳</td><td>10 段 PEQ、单耳 4.2g、总续航 50h+</td><td>百元 HiFi 降噪尝鲜</td></tr>
+<tr><td>漫步者 X3 Air / FIIL Key Pro</td><td>¥100-200</td><td>半入耳</td><td>连接稳定、基础音质</td><td>学生党、日常听歌</td></tr>
+<tr><td>漫步者 W820NB</td><td>¥500-800</td><td>头戴</td><td>降噪 + 均衡音质</td><td>预算有限的头戴降噪</td></tr>
+<tr><td>OPPO Enco X3</td><td>¥759-799</td><td>入耳</td><td>ANC、IP55、弹窗连接</td><td>🔴 600-800 档主力推荐</td></tr>
+<tr><td>小米 Buds 5 Pro</td><td>¥800-1299</td><td>入耳</td><td>三单元、最高 55dB 降噪、aptX Lossless；注意区分蓝牙版/Wi-Fi 版</td><td>小米/安卓旗舰用户</td></tr>
+<tr><td>OPPO Enco X4</td><td>¥1099-1199</td><td>入耳</td><td>丹拿双单元、LHDC Lossless 2.3Mbps</td><td>安卓音质党</td></tr>
+<tr><td>华为 FreeBuds Pro 5</td><td>¥1199-1399</td><td>入耳</td><td>星闪音频、鸿蒙协同</td><td>华为生态用户</td></tr>
+<tr><td>AirPods Pro 3</td><td>¥1299-1399</td><td>入耳</td><td>空间音频、头部追踪、苹果生态无缝</td><td>iPhone 用户（音质非同价最强）</td></tr>
+<tr><td>森海塞尔 Accentum Clip</td><td>约 ¥1499</td><td>耳夹</td><td>单耳 6.8g、IP54</td><td>运动、怕入耳</td></tr>
+<tr><td>索尼 WF-1000XM6</td><td>约 ¥2199</td><td>入耳</td><td>降噪标杆、AI 通话、骨传导传感</td><td>通勤降噪极致</td></tr>
+</tbody>
+</table>
+
+<h3>5.2 头戴式</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>水月雨 Old Fashioned</td><td>约 ¥99</td><td>复古小头戴、开放式、轻便</td><td>百元佩戴尝鲜</td></tr>
+<tr><td>飞傲 WIND PRO</td><td>约 ¥109</td><td>40mm 动圈、宽松饱满流行人声</td><td>宿舍 / 出街、颜值党</td></tr>
+<tr><td>飞傲 FG3</td><td>约 ¥399</td><td>同轴双动圈 + DSP、听声辨位</td><td>游戏 + 听歌兼顾</td></tr>
+<tr><td>水月雨 EDGE 2</td><td>约 ¥499</td><td>自适应降噪 + 有线模式、HiFi 调音</td><td>HiFi 入门又要降噪</td></tr>
+<tr><td>索尼 WH-CH720N</td><td>¥800-1500</td><td>轻量、降噪好</td><td>长时间佩戴通勤</td></tr>
+<tr><td>索尼 WH-1000XM5</td><td>¥1500-2500</td><td>降噪 + 音质标杆</td><td>🔴 头戴主力推荐</td></tr>
+<tr><td>Bose QC Ultra</td><td>¥2500 以上</td><td>佩戴最舒适、降噪顶级</td><td>长途飞行、办公</td></tr>
+<tr><td>森海塞尔 Momentum 5（大馒头 5）</td><td>约 ¥3299</td><td>HiFi 调音底子、可换电池设计</td><td>音质取向的头戴党</td></tr>
+</tbody>
+</table>
+
+<h3>5.3 有线 HiFi（同价位音质最优）</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>水月雨 CHU 3 竹 III</td><td>约 ¥100</td><td>调音温和、低频饱满</td><td>2026 VGP 金赏、性价比大赏</td></tr>
+<tr><td>达音科 TITAN X</td><td>约 ¥199</td><td>高性能单动圈</td><td>百元越级之选</td></tr>
+<tr><td>水月雨 Aria 2</td><td>¥100-300</td><td>均衡、解析好</td><td>入门经典</td></tr>
+<tr><td>达音科 SA6 MK2</td><td>¥300-800</td><td>圈铁、调音成熟</td><td>进阶人声</td></tr>
+<tr><td>达音科 KIMA 2</td><td>约 ¥799</td><td>新配色、VGP 金赏</td><td>800 档甜品</td></tr>
+<tr><td>飞傲 FH15</td><td>¥800-2000</td><td>圈铁、可换插头</td><td>可玩性高</td></tr>
+<tr><td>达音科 FALCON ULTRA</td><td>约 ¥1580</td><td>单动圈、VGP 金赏</td><td>进阶旗舰</td></tr>
+<tr><td>索尼 IER-Z1R</td><td>¥2000 以上</td><td>旗舰圈铁</td><td>发烧级</td></tr>
+<tr><td>达音科 岚</td><td>约 ¥9888</td><td>全尺寸平板振膜</td><td>顶级旗舰</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>有线特别提醒：</strong>部分手机的 Type-C 口不支持模拟音频输出，插上有线耳机没声音未必是耳机坏了。解决方式是买内置解码芯片的 Type-C 耳机，或改选蓝牙。</div>
+
+<h2 id="s6">6. 华强北梯队与避坑</h2>
+<div class="note"><strong>先修正一个常见误解：</strong>悦虎正品只认<strong>昇龙悦虎主板 + 洛达原装芯片</strong>，二者缺一不可。正品主力芯片只有三款：<strong>1571AM / 1562AE / 1563E</strong>。像 1562A、1562F、H2/H3，以及"1561M"这类叫法多是改芯冒充或非正规版本，别当正品买。</div>
+<table>
+<thead><tr><th>梯队</th><th>芯片方案</th><th>2026 行情价</th><th>实际表现</th><th>结论</th></tr></thead>
+<tbody>
+<tr><td>低端 / 改芯</td><td>杰理 / 中科蓝讯 / 改芯冒充（1562A、1562F、H2/H3）</td><td>¥10-150</td><td>降噪≈0、虚标续航、音质含糊</td><td class="p0">🔴 别碰</td></tr>
+<tr><td>入门正品</td><td>洛达 1563E（八代半入耳）</td><td>¥220-240</td><td>40dB 基础降噪 + 通透，一拖二；无陀螺仪、无头部追踪；主打久戴不痛</td><td class="p1">🟡 舒适优先</td></tr>
+<tr><td>性价比主力</td><td>洛达 1562AE（五代 Pro2 入耳）</td><td>¥260-280</td><td>45dB 降噪 + 通透、一拖二、空间音频；<strong>稳定性最强、故障率最低</strong></td><td class="p2">🟢 闭眼选这款</td></tr>
+<tr><td>顶配</td><td>洛达 1571AM（五代 Pro2 入耳 / 六代半入耳）</td><td>¥300-320</td><td>48dB 自适应降噪 + AI 对话感知（说话自动切通透）、一拖三、头部追踪空间音频、蓝牙 5.4 / LE Audio / LC3、钢壳电池续航最强</td><td class="p2">🟢 功能最全</td></tr>
+<tr><td>非悦虎系</td><td>恒玄 2700YP / 金刚 V8（头戴）</td><td>头戴 ¥550-680</td><td>约正品 80-90% 体验，头戴约 45dB 降噪</td><td class="p1">🟡 无官方售后</td></tr>
+</tbody>
+</table>
+<div class="warn">
+<strong>关于 1571AM 的实话：</strong>48dB 和 2500Hz 频宽是<strong>芯片理论上限</strong>，不等于实际体验。多位长期用户反馈：通勤场景下 1571AM 与 1562AE 的主观降噪差异不大——麦克风布局、腔体声学和算法调校没同步迭代，芯片潜力没完全释放。<strong>已有 1562AE 没必要升级；首次买、又想要一拖三和对话感知，1571AM 才是当前合理上限。</strong>别为"48dB"三个字多花冤枉钱。
+</div>
+<div class="warn">
+<strong>避坑六条铁律：</strong><br>
+① 价格红线：1571AM 低于 300、1562AE 低于 260、1563E 低于 220，基本都是改版货；<strong>150 元以下必假</strong>。<br>
+② 别信"降噪超越正品"——顶标 45-48dB 是实验室峰值，真实场景要打七折。<br>
+③ 别信"终身质保"——华强北档口平均寿命按月算，线上售后普遍只有 7 天。<br>
+④ <strong>到手必验机</strong>：装官方原版 FlyCC（安卓更稳，别用商家给的安装包），必须显示芯片型号 1571AM / 1562AE / 1563E + 昇龙 SW 编码；同时看包装黄标、紫外灯照仓内防伪暗码（OKS）。<br>
+⑤ 功能实测：1571AM 要测开口自动切通透、三设备切换；功能缺失就是低配改版。<br>
+⑥ 优先线下实体店当场验机，别撕充电仓膜，选支持无理由退的商家。
+</div>
+<p><strong>我的判断：</strong>真要尝鲜，<strong>260 元上下的 1562AE 是最稳选择</strong>（故障率最低）；预算够且常在多台苹果设备间切换再上 1571AM。所谓"07 顶配""Pro3 顶配"都是渠道营销代号，没有官方保障。真要长期听歌，同价位国产品牌（漫步者、OPPO、水月雨）稳定性、售后和调音都更靠谱。</p>
+
+<h2 id="s7">7. 音源与编解码匹配</h2>
+<h3>7.1 音频链路：瓶颈在哪</h3>
+<div class="chain">
+  <div class="step"><b>1 音源文件</b><span>MP3 / FLAC / HiRes</span></div>
+  <div class="arrow">→</div>
+  <div class="step hot"><b>2 传输链路</b><span>最容易被忽略的瓶颈</span></div>
+  <div class="arrow">→</div>
+  <div class="step"><b>3 耳机本身</b><span>单元 + 调音决定听感</span></div>
+  <div class="arrow">→</div>
+  <div class="step"><b>4 你的耳朵</b><span>环境 + 佩戴影响很大</span></div>
+</div>
+<div class="warn"><strong>iPhone + AirPods 全程只跑 AAC 约 256kbps —— 开无损会员基本听不出差别。</strong>想真正吃满 HiRes，需要安卓旗舰（LDAC/LHDC）+ 支持的耳机，或者有线 + DAC。</div>
+
+<h3>7.2 蓝牙编码对照</h3>
+<table>
+<thead><tr><th>编码</th><th>码率</th><th>延迟</th><th>一句话</th><th>谁在用</th></tr></thead>
+<tbody>
+<tr><td>SBC</td><td>约 328kbps</td><td>150-220ms</td><td>保底协议，音质最差</td><td>所有蓝牙设备</td></tr>
+<tr><td>AAC</td><td>256-320kbps</td><td>120-180ms</td><td>苹果调校好，安卓看厂商</td><td>iPhone 全系</td></tr>
+<tr><td>aptX Adaptive</td><td>279-420kbps</td><td>约 80ms / 40ms LL</td><td>动态调节，低延迟</td><td>高通安卓</td></tr>
+<tr><td>LDAC</td><td>最高 990kbps</td><td>100ms 以上</td><td>接近无损，但高码率易断连费电</td><td>索尼 / 安卓旗舰</td></tr>
+<tr><td>LHDC</td><td>400-900kbps</td><td>约 100-150ms</td><td>与 LDAC 类似的国产高码率方案</td><td>华为 / 小米部分机型</td></tr>
+<tr><td>LC3</td><td>160-345kbps</td><td>可低于 50ms</td><td>LE Audio 新一代，效率高</td><td>新款 TWS / 助听器</td></tr>
+</tbody>
+</table>
+
+<h3>7.3 音乐平台怎么选</h3>
+<table>
+<thead><tr><th>平台</th><th>最高音质</th><th>代价</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>Apple Music</td><td>ALAC 无损 / 24bit 192kHz + 杜比全景声</td><td>订阅即含，无需加价</td><td>苹果生态、欧美/古典</td></tr>
+<tr><td>QQ 音乐</td><td>FLAC 无损 / 部分母带档</td><td>需会员，部分曲目需更高档</td><td>🔴 中文曲库最全、安卓适配广</td></tr>
+<tr><td>网易云音乐</td><td>FLAC 无损 / 部分 Hi-Res</td><td>需黑胶 VIP</td><td>独立音乐、社区歌单氛围</td></tr>
+<tr><td>Tidal / Qobuz</td><td>HiRes FLAC 24bit/192kHz</td><td>需稳定国际网络</td><td>发烧友、古典爵士</td></tr>
+</tbody>
+</table>
+<div class="tip"><strong>设置铁律：</strong>① 关掉系统均衡器和 App 音效增强，选直通模式；② 移动网络/地铁别开最高音质，容易卡顿断连；③ 百元耳机在嘈杂环境听歌，开不开无损基本无差别，省下会员费更实在。</div>
+
+<h2 id="s8">8. 三步决策法</h2>
+<ol class="steps">
+<li><strong>定场景：</strong>通勤地铁 → 入耳 + 强 ANC；在家静听 → 有线 HiFi 或头戴；运动骑车 → 耳夹/开放式。</li>
+<li><strong>定手机：</strong>iPhone → 认准 AAC 调校好的（AirPods / AirPods Pro），别为 LDAC 多花钱；安卓旗舰 → 优先 LDAC / LHDC / aptX Adaptive。</li>
+<li><strong>定预算：</strong>100-200 元听个响或买有线 HiFi；300-800 元买主力 TWS；1000 元以上上旗舰降噪。就这三步，不用再纠结参数表。</li>
+</ol>
+
+<h2 id="s9">9. 三套落地配置</h2>
+<table>
+<thead><tr><th>预算</th><th>配置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>100-200 元</td><td>水月雨 CHU3 / 达音科 TITAN X（有线）+ QQ 音乐高品质</td><td>花最少钱听清"音质是什么"，为后续升级建立判断基准</td></tr>
+<tr><td>300-800 元</td><td>OPPO Enco X3 / 漫步者 W820NB + 安卓开 LDAC</td><td>🔴 小白最优解，降噪、音质、功能全都有</td></tr>
+<tr><td>1000 元以上</td><td>索尼 WH-1000XM5（头戴降噪）+ Apple Music</td><td>出差通勤党天花板；iPhone 用户直接用 AirPods Pro 3 更省事</td></tr>
+</tbody>
+</table>
+
+<h2 id="s10">10. 术语速查</h2>
+<table>
+<thead><tr><th>术语</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>ANC</td><td>主动降噪，用反向声波抵消低频噪音</td></tr>
+<tr><td>通透模式</td><td>用麦克风把环境音放进耳朵，不摘耳机可对话</td></tr>
+<tr><td>动圈 / 动铁 / 圈铁</td><td>发声单元类型；动圈低频好，动铁解析强，圈铁两者结合。单元数量不等于音质</td></tr>
+<tr><td>LDAC / LHDC</td><td>高码率蓝牙编码，接近无损，需手机和耳机双方都支持</td></tr>
+<tr><td>Hi-Res</td><td>高于 CD 规格（24bit/96kHz 以上）的音源，需好设备才听得出</td></tr>
+<tr><td>DAC</td><td>数字模拟转换器，把数字音频转成耳机能播放的模拟信号</td></tr>
+<tr><td>IPX4 / IPX5</td><td>防水等级，防汗 / 防泼溅，不能游泳</td></tr>
+</tbody>
+</table>
+
+<footer>
+<p>数据来源：2026 年网络公开渠道（京东消费决策中心、VGP 2026 评选、厂商规格页、耳机社区与流媒体平台对比资料），检索日期 2026-11-26。价格随促销波动，购买前请以商品页为准。</p>
+<p>本报告仅供选购参考，不构成购买承诺。听感高度主观，条件允许建议线下试听。</p>
+</footer>
+</div>
+</body>
+</html>

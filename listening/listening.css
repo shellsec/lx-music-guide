@@ -1,0 +1,59 @@
+:root {
+  --bg: #faf8ff;
+  --ink: #28213d;
+  --muted: #625972;
+  --line: #e5def0;
+  --blue: #53359c;
+  --blue-bg: #efe6fa;
+}
+
+.listening-nav {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.listening-nav > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 12px 24px;
+}
+
+.listening-nav a {
+  padding: 4px 0;
+  color: var(--blue);
+  text-underline-offset: 4px;
+}
+
+.listening-nav [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+body > header { background: #f1eafa; }
+body > header h1 { font-size: clamp(26px, 5vw, 40px); }
+h2 { border-bottom-color: var(--line); }
+th { background: #f1eafa; }
+table { max-width: 100%; overflow-x: auto; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+.listening-start.wrap { padding-bottom: 0; }
+.listening-start h2 { margin-top: 0; }
+.bluetooth-guide nav.listening-nav { display: block; }
+.bluetooth-guide .bluetooth-heading { margin-block: 36px 20px; }
+.bluetooth-guide .bluetooth-heading h1 { font-size: clamp(26px, 5vw, 40px); margin: 0 0 8px; }
+.bluetooth-guide .bluetooth-heading p { color: var(--muted); }
+.bluetooth-guide main { padding-bottom: 40px; }
+.bluetooth-guide .panel h2 { font-size: 1.1rem; }
+
+@media (max-width: 520px) {
+  .listening-nav > div { gap: 4px 12px; padding-inline: 16px; }
+  body .wrap { padding-inline: 16px; }
+  body .card { padding-inline: 14px; }
+}
+
+@media print {
+  .listening-nav { display: none; }
+}

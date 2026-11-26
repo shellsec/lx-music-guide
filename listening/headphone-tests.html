@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>耳机评测实战 | 听音指南</title>
+<style>
+:root{
+  --bg:#f7f8fa; --card:#fff; --ink:#1f2430; --muted:#5f6775; --line:#e3e6eb;
+  --blue:#185fa5; --blue-bg:#e6f1fb; --green:#0f6e56; --green-bg:#e1f5ee;
+  --amber:#854f0b; --amber-bg:#faeeda; --red:#a32d2d; --red-bg:#fcebeb;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14.5px;line-height:1.65}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px 80px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:40px 0 28px;margin-bottom:24px}
+header .wrap{padding-bottom:0}
+h1{font-size:27px;margin:0 0 6px;font-weight:600}
+.sub{color:var(--muted);margin:0}
+.meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--blue-bg);color:var(--blue)}
+.tag.g{background:var(--green-bg);color:var(--green)}
+.tag.a{background:var(--amber-bg);color:var(--amber)}
+h2{font-size:20px;margin:38px 0 10px;padding-bottom:7px;border-bottom:2px solid var(--ink);font-weight:600}
+h3{font-size:15.5px;margin:20px 0 7px;font-weight:600}
+p{margin:8px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:7px}
+.toc a{display:block;padding:7px 10px;background:var(--bg);border-radius:8px;color:var(--ink);text-decoration:none;font-size:13px}
+.toc a:hover{background:var(--blue-bg);color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:#fff;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#f0f3f7;font-weight:600;white-space:nowrap}
+tr:nth-child(even) td{background:#fafbfc}
+.note{border-left:4px solid var(--blue);background:var(--blue-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+.warn{border-left:4px solid var(--red);background:var(--red-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+.tip{border-left:4px solid var(--green);background:var(--green-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:11px 0}
+button{font:inherit;font-size:13px;padding:7px 14px;border:1px solid var(--blue);border-radius:8px;background:var(--blue);color:#fff;cursor:pointer;margin:4px 6px 4px 0}
+button.sec{background:#fff;color:var(--blue)}
+button.danger{background:#fff;color:var(--red);border-color:var(--red)}
+.dim{background:var(--blue-bg);color:var(--blue);font-size:12px;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.p0{color:var(--red);font-weight:600}
+.p1{color:var(--amber);font-weight:600}
+.p2{color:var(--green);font-weight:600}
+ol.steps{padding-left:22px}
+ol.steps li{margin:6px 0}
+footer{margin-top:46px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.noiprint{display:block}
+/* 打分器 */
+.score-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0}
+.score-head{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px}
+.score-head label{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
+.score-head input{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:13px}
+.dim-row{display:grid;grid-template-columns:minmax(150px,1.1fr) minmax(190px,1.6fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px dashed var(--line)}
+.dim-row:first-of-type{border-top:none}
+.dim-name{font-weight:600;font-size:13.5px}
+.dim-name small{display:block;color:var(--muted);font-weight:400;font-size:11.5px}
+.dim-test{color:var(--muted);font-size:11.5px;line-height:1.5}
+.stars{display:flex;gap:4px}
+.star{width:32px;height:30px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);cursor:pointer;font-size:12px;padding:0}
+.star.on{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700}
+.result{margin-top:16px;padding:14px 16px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.result .big{font-size:26px;font-weight:700;color:var(--blue)}
+.result .verdict{font-size:14px;margin-top:4px}
+.saved-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;font-size:12.5px}
+.saved-item{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;position:relative}
+.saved-item b{display:block;font-size:13.5px}
+@media (max-width:720px){.dim-row{grid-template-columns:1fr}.stars{justify-content:flex-start}}
+@media print{
+  body{background:#fff;font-size:11px}
+  header{padding:10px 0;margin-bottom:12px}
+  h1{font-size:20px}
+  h2{font-size:15px;margin:18px 0 6px;page-break-after:avoid}
+  h3{font-size:12.5px;page-break-after:avoid}
+  .card,.score-panel{padding:10px 12px;margin:8px 0}
+  table{font-size:9.5px;display:table;page-break-inside:auto}
+  tr{page-break-inside:avoid}
+  th,td{padding:3px 5px}
+  .noiprint{display:none!important}
+  .toc{display:none}
+  .star{border:1px solid #999;color:#000}
+}
+</style>
+<link rel="stylesheet" href="listening.css">
+</head>
+<body>
+<nav class="listening-nav noiprint" aria-label="听音指南导航"><div><a href="../index.html#listening">音乐资源指南</a><a href="audio-basics.html">音质与设备入门</a><a href="bluetooth-help.html">蓝牙连接与排查</a><a href="buying-guide.html">耳机与音箱选购</a><a href="world-audio-awards.html">年度耳机与音响奖项</a><a href="headphone-tests.html" aria-current="page">耳机评测实战</a><a href="vocal-playlist.html">人声试音歌单</a></div></nav>
+<header>
+  <div class="wrap">
+    <h1>耳机评测实战</h1>
+    <p class="sub">五维打分器 · 试音曲锚定 · 客观参数解读 · 主流型号口碑 · 十大误区辟谣</p>
+    <div class="meta">
+      <span class="tag">版本 2026-11</span>
+      <span class="tag g">打分结果自动保存在本机浏览器</span>
+      <span class="tag a">主观听感为主，参数为辅；不神化任何榜单</span>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+
+<div class="card noiprint">
+  <h3 style="margin-top:0">目录与用法</h3>
+  <div class="toc">
+    <a href="#s1">1. 评测的三条铁律</a>
+    <a href="#s2">2. 五维打分器（核心）</a>
+    <a href="#s3">3. 试音曲锚定表</a>
+    <a href="#s4">4. 客观参数怎么读</a>
+    <a href="#s5">5. 主流型号口碑速查</a>
+    <a href="#s6">6. 十大误区辟谣</a>
+    <a href="#s7">7. 双盲自测流程</a>
+  </div>
+</div>
+
+<h2 id="s1">1. 评测的三条铁律</h2>
+<div class="card">
+<p>评测不是"听了觉得不错"就完了。主观感受极易被音量、心情、价格预期干扰，所以先把规则定死：</p>
+<ol class="steps">
+<li><strong>控制变量：</strong>同一首曲、同一音量、同一前端，只换耳机。音量差 2-3dB 就会让人误判"更清晰"——人耳天生偏爱更响的那个。<strong>务必先把两副耳机的响度调到一致再 A/B。</strong></li>
+<li><strong>盲听优先：</strong>价格、品牌、外观会强烈暗示大脑。让家人随机切换、你不看哪副在响，或者至少"先听后看型号"。双盲才是排除心理偏差的唯一办法。</li>
+<li><strong>用熟悉的曲子：</strong>选 3-5 首你闭着眼都熟的歌，重点听"和记忆里的差别"，而不是第一次听的新歌。新歌你根本不知道"本来该是什么样"。</li>
+</ol>
+<div class="note"><strong>音源底线：</strong>至少 FLAC 无损，关掉系统 EQ 与 App 音效。用 128kbps 评测等于戴着眼罩验视力——高频残响已被压缩抹掉，再好的耳机也听不出来。</div>
+</div>
+
+<h2 id="s2">2. 五维打分器（核心）</h2>
+<p>每维 1-5 分，按权重自动算总分。所有维度都有锚定曲提示，配合第 3 节使用。<strong>做完保存，可多副横向对比。</strong></p>
+<div class="score-panel noiprint">
+  <div class="score-head">
+    <div><label>耳机 / 设备名称</label><input id="inName" placeholder="如：OPPO Enco Free4"></div>
+    <div><label>参考价格（元）</label><input id="inPrice" type="number" placeholder="如：499"></div>
+    <div><label>类型</label><input id="inType" placeholder="如：入耳TWS / 头戴 / 有线"></div>
+  </div>
+  <div id="dims"></div>
+  <div style="margin-top:12px;border-top:1px dashed var(--line);padding-top:10px">
+    <div class="dim-name" style="margin-bottom:6px">附加功能（不计入音质总分，按你的场景另判）</div>
+    <div class="dim-row" style="border:none;padding:4px 0">
+      <div class="dim-test">降噪：地铁/飞机是否有效、人声能否压住　·　延迟：看视频是否口型同步　·　续航与佩戴：能否久戴</div>
+      <div class="stars" id="extraStars"></div>
+    </div>
+  </div>
+  <div class="result">
+    <div>加权总分：<span class="big" id="total">—</span> <span id="starsTxt" style="color:var(--muted)"></span></div>
+    <div class="verdict" id="verdict">请在上方为五个维度打分。</div>
+    <div style="margin-top:10px">
+      <button onclick="saveScore()">保存这次评测</button>
+      <button class="sec" onclick="window.print()">打印 / 存为 PDF</button>
+    </div>
+  </div>
+</div>
+<div class="tip"><strong>分数只是工具，不是圣旨。</strong>总分 4.2 以上说明综合素质优秀；3.5-4.2 符合主流价位；3.0-3.5 有明显短板；3.0 以下建议放弃。但<strong>价格匹配度</strong>更重要：一副 300 元的耳机拿 3.6 分就很值，2000 元的只拿 3.6 分就不值。</div>
+
+<h3>已保存的评测</h3>
+<div id="savedList" class="noiprint"><p style="color:var(--muted)">还没有保存记录。</p></div>
+
+<h2 id="s3">3. 试音曲锚定表</h2><p><a href="vocal-playlist.html#s2">打开人声试音歌单</a></p>
+<p>这些曲子是行业里反复验证过的"标尺"，每首只测一件事。听的时候只盯那一件事，别被旋律带跑。</p>
+<table>
+<thead><tr><th>曲目 / 演绎</th><th>锚定维度</th><th>合格表现</th><th>不合格表现</th></tr></thead>
+<tbody id="anchorTable"></tbody>
+</table>
+
+<h2 id="s4">4. 客观参数怎么读</h2>
+<p>参数是"排除硬伤"的筛子，不是"好听"的保证。下面这些值得看，其他营销词大多可以忽略。</p>
+<table>
+<thead><tr><th>参数</th><th>看什么</th><th>参考线</th><th>陷阱</th></tr></thead>
+<tbody>
+<tr><td><strong>频响曲线</strong></td><td>20Hz-20kHz 全段的起伏形状，重点看 200Hz-2kHz 中频是否平整</td><td>中频波动 ±1.5dB 内较稳；整体 ±3dB 内可接受</td><td class="p0">"20Hz-20kHz"标称只说明能响，不代表响得好；曲线可授权伪造、小音量测 EQ 造假</td></tr>
+<tr><td><strong>THD+N 失真</strong></td><td>数值越低越干净</td><td>1kHz/94dB 下低于 0.5% 为佳</td><td>偶次谐波听感温润、奇次谐波刺耳，单纯数字低不代表好听</td></tr>
+<tr><td><strong>灵敏度 + 阻抗</strong></td><td>两个一起看：高灵敏度易推，但也更容易暴露前端底噪</td><td>32Ω/98dB 手机轻松推；16Ω/90dB 反而更难</td><td>别只看"低阻好推"，灵敏度被忽略最常见</td></tr>
+<tr><td><strong>降噪深度 dB</strong></td><td>更该看降噪频响曲线与耳压控制</td><td>实测核心频段衰减 30dB 已属不错</td><td class="p0">宣传 40/50dB 多为单点实验室值，真实场景常打七折；对人声基本无效</td></tr>
+<tr><td><strong>编码协议</strong></td><td>LDAC/LHDC/aptX Adaptive 决定蓝牙音质天花板</td><td>900kbps 级接近无损，但抗干扰差</td><td>耳机支持没用，手机不支持照样跑 AAC；Hi-Res 金标可付费授权</td></tr>
+<tr><td><strong>声道分离度</strong></td><td>越高声场越独立</td><td>&gt;30dB 合格，&gt;35dB 优秀</td><td>"假宽声场"可能是相位问题，切单声道会露馅</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>哈曼曲线是什么：</strong>基于大规模双盲测试统计出的"大众偏好"频响标准，作用是让耳机避开刺耳、轰头等明显硬伤，约 64% 的人第一次听觉得舒服。但约 36% 的人天生偏重低音或对其敏感，会觉得"没劲"或"轰头"。<strong>它是参考线，不是标准答案。</strong></div>
+
+<h2 id="s5">5. 主流型号口碑速查</h2>
+<p>下表是公开评测与社区口碑的<strong>定性印象</strong>，不是实验室分数。用途是缩小试听范围——最终一定要自己听。</p>
+<table>
+<thead><tr><th>价位</th><th>代表型号</th><th>口碑标签</th><th>适合谁 / 注意</th></tr></thead>
+<tbody>
+<tr><td>¥100-200</td><td>水月雨 CHU3、达音科 TITAN X</td><td>有线 HiFi 入门，同价位音质最实在</td><td class="p2">🟢 想建立音质判断力首选，需前端或转头</td></tr>
+<tr><td>¥200-500</td><td>漫步者 W820NB、OPPO Enco Air 系列</td><td>基础降噪 + 长续航，均衡无硬伤</td><td class="p2">🟢 学生党/日常通勤，别期待旗舰音质</td></tr>
+<tr><td>¥300-800</td><td>OPPO Enco Free4、漫步者 W820NB Pro</td><td>真 ANC + 高清编码的甜区</td><td class="p2">🔴 小白最优解，降噪音质兼顾</td></tr>
+<tr><td>¥800-1500</td><td>索尼 WH-CH 系列、华为 FreeBuds Pro 系列</td><td>降噪与调音成熟，生态联动好</td><td class="p1">🟡 认准手机生态，跨品牌会损失编码</td></tr>
+<tr><td>¥1500-2500</td><td>索尼 WH-1000XM5、AirPods Pro 2、Bose QC 系列</td><td>旗舰降噪 / 空间音频，佩戴轻便</td><td class="p2">🟢 出差通勤天花板；XM5 不能折叠收纳</td></tr>
+<tr><td>¥2500+</td><td>索尼 WH-1000XM6、高端有线 HiFi、便携播放器套装</td><td>边际收益递减，细节与声场提升有限</td><td class="p1">🟡 已明确自己偏好再上，别盲买</td></tr>
+</tbody>
+</table>
+<div class="warn"><strong>价格 ≠ 好听：</strong>贵耳机往往是在某个方向做到极致（解析、低频、声场），而不是全面碾压。拿一条主打古典解析的旗舰去听流行人声，可能不如五百块的人声塞。<strong>先确定听什么，再定预算。</strong></div>
+
+<h2 id="s6">6. 十大误区辟谣</h2>
+<table>
+<thead><tr><th>流传说法</th><th>真相</th><th>优先级</th></tr></thead>
+<tbody id="mythTable"></tbody>
+</table>
+
+<h2 id="s7">7. 双盲自测流程（10 分钟版）</h2>
+<ol class="steps">
+<li><strong>准备：</strong>两副耳机、同一音源（FLAC）、同一首锚定曲、音量调到一致。请家人或朋友帮忙随机切换，不告诉你 A/B 是哪副。</li>
+<li><strong>盲听第一轮：</strong>只听<strong>中频人声</strong>（蔡琴《渡口》或《被遗忘的时光》），判断哪副更自然、不薄不闷。切换尽量在 15 秒内完成，避免听觉记忆衰减。</li>
+<li><strong>盲听第二轮：</strong>只听<strong>高频齿音</strong>（童丽、陈洁丽），判断哪副更通透但不刺耳。刺耳的那副长时间听会累。</li>
+<li><strong>盲听第三轮：</strong>只听<strong>低频与声场</strong>（赵鹏《船歌》或《加州旅馆》前奏），判断低频是否干净有弹性、乐器定位是否清楚。</li>
+<li><strong>休息：</strong>连续对比超过 30 分钟，耳朵会出现暂时性阈移，判断会失真。停下来安静 5 分钟再下结论。</li>
+<li><strong>揭晓：</strong>这时再看型号和价格。如果盲听赢家是便宜的那副——相信你的耳朵，不要被价格翻盘。</li>
+</ol>
+<div class="tip"><strong>最后一条：</strong>如果参数显示 A 更好，但你真心更喜欢 B 的味道，选 B。音频最终是情绪连接，能让你一直听下去的那副才是对的。</div>
+
+<footer>
+<p>数据来源：2026 年公开资料（太平洋科技耳机评测方法解析、耳机社区误区汇总、什么值得买科学调音讨论、DxOMark 音频评测指标、IEEE/IEC 60268-7 听音流程要点）。口碑表为社区定性印象，非实验室数据。</p>
+<p>打分与保存记录仅存于当前浏览器本地，不上传。打印时交互控件会简化显示，评分结果以文字形式保留。</p>
+</footer>
+</div>
+
+<script>
+// ===== 打分器数据 =====
+const DIMS = [
+  {key:'freq', name:'三频均衡', weight:30, sub:'低不轰、中不薄、高不刺', test:'蔡琴《渡口》鼓点 + 人声；童丽高频；赵鹏低频'},
+  {key:'detail', name:'解析与细节', weight:20, sub:'能听到更多微细节', test:'Meav《One I Love》前 90 秒呼吸与齿音；黄莺莺《哭砂》尾音'},
+  {key:'stage', name:'声场与结像', weight:20, sub:'乐器定位准、人声不飘', test:'《加州旅馆》现场版前奏掌声与吉他；蔡琴人声是否居中稳定'},
+  {key:'dynamic', name:'动态与瞬态', weight:15, sub:'强弱对比、鼓点收放', test:'闫学敏《鼓诗》；卡拉扬《拉德斯基进行曲》；《1812 序曲》炮声'},
+  {key:'wear', name:'佩戴与舒适', weight:15, sub:'久戴不痛不胀、隔音贴合', test:'连续戴 1 小时；摇头/说话是否松动；耳压是否不适'}
+];
+const EXTRA_LABELS = ['弱','一般','够用','不错','强'];
+const ANCHORS = [
+  ['蔡琴《渡口》','低频下潜 + 人声结像','前三声鼓点清晰可辨、收放干净','鼓声拖尾浑浊、人声发飘'],
+  ['蔡琴《被遗忘的时光》','中频醇厚与气息','开头清唱能听出换气与唇齿声','人声发薄、齿音发干'],
+  ['童丽《枉凝眉》','高频通透与齿音控制','清亮不刺、尾音顺滑','齿音扎耳、金属味'],
+  ['Meav《One I Love》','解析力与微动态','能听到呼吸、喉部振动','细节糊成一片'],
+  ['赵鹏《船歌》','低频下潜与弹性','低音下潜深但不轰头','低频发闷或轰头'],
+  ['老鹰乐队《加州旅馆》现场版','声场宽度与定位','吉他呈扇形展开、掌声有纵深','声音挤在头部中间'],
+  ['闫学敏《鼓诗》','瞬态响应','密集鼓点粒粒分明','糊成一团'],
+  ['黄莺莺《哭砂》','高音透明与残响','尾音自然消散不突兀','高频刺耳或突然截断'],
+  ['玉置浩二《夜色》','氛围与中低频质感','人声松弛、背景不乱','声场拥挤、人声压抑'],
+  ['帕瓦罗蒂《今夜无人入睡》','男高音能量与声场','声音有穿透力不破音','高音劈裂或发虚']
+];
+const MYTHS = [
+  ['贵的耳机一定更好听','贵通常是在某个方向做到极致，不是全面碾压。先确定听什么，再定预算。','p0'],
+  ['煲机能脱胎换骨','机械层面变化极小且多在最初几十小时；"越听越好"主要来自耳朵适应。正常听即可。','p1'],
+  ['煲线材能明显提升','导体电气特性由材质和结构决定，不随通电时长改变。想改味道换线材材质更可控。','p0'],
+  ['Hi-Res 金标 = 音质顶级','认证可付费授权；手机不支持高清编码时照样跑 AAC。金标只说明兼容规格。','p0'],
+  ['大单元 = 低频好','单元只是基础，调音与腔体设计影响更大。同尺寸单元听感可以差很远。','p1'],
+  ['降噪深度 50dB 很静','单点实验室值，真实场景常打七折；且对人声基本无效，别信单点峰值。','p0'],
+  ['无线一定不如有线','中高端蓝牙在通勤场景日常听感差别很小；除非做混音或极在意延迟。','p1'],
+  ['音量越大越能听出细节','相反，音量过大会触发耳朵保护机制，高频细节反而变糊。试音用舒适音量。','p1'],
+  ['低阻抗就好推','灵敏度才是关键，两者要看。16Ω/90dB 比 32Ω/98dB 更难推。','p1'],
+  ['空间音频提升音质','主要是看影视的环绕氛围，对纯听歌提升有限，别当核心卖点加价。','p2']
+];
+
+const SCORE_KEY = 'headphone-review-scores-v1';
+let scores = [];
+try { scores = JSON.parse(localStorage.getItem(SCORE_KEY) || '[]'); } catch(e) { scores = []; }
+let current = {};
+
+function renderDims(){
+  const d = document.getElementById('dims');
+  d.innerHTML = DIMS.map(x =>
+    '<div class="dim-row"><div class="dim-name">' + x.name + ' <span class="dim">' + x.weight + '%</span><small>' + x.sub + '</small></div>' +
+    '<div class="dim-test">锚定：' + x.test + '</div>' +
+    '<div class="stars" id="s_' + x.key + '">' + [1,2,3,4,5].map(n =>
+      '<button type="button" class="star" data-k="' + x.key + '" data-n="' + n + '" onclick="pick(\'' + x.key + '\',' + n + ')">' + n + '</button>').join('') + '</div></div>'
+  ).join('');
+  document.getElementById('extraStars').innerHTML = [1,2,3,4,5].map(n =>
+    '<button type="button" class="star" data-k="extra" data-n="' + n + '" onclick="pick(\'extra\',' + n + ')" title="' + EXTRA_LABELS[n-1] + '">' + n + '</button>').join('');
+  updateResult();
+}
+function pick(k,n){
+  current[k] = n;
+  document.querySelectorAll('.star[data-k="' + k + '"]').forEach(b => b.classList.toggle('on', +b.dataset.n === n));
+  updateResult();
+}
+function totalScore(){
+  let sum = 0, w = 0, full = true;
+  DIMS.forEach(x => { if (current[x.key]) { sum += current[x.key] * x.weight; w += x.weight; } else full = false; });
+  return {value: w ? sum / w : 0, full: full, filled: DIMS.filter(x => current[x.key]).length};
+}
+function updateResult(){
+  const r = totalScore();
+  const el = document.getElementById('total');
+  el.textContent = r.value ? r.value.toFixed(2) : '—';
+  document.getElementById('starsTxt').textContent = r.value ? ' / 5.00　（已填 ' + r.filled + '/5 维）' : '';
+  let v;
+  if (!r.full) v = '还有 ' + (5 - r.filled) + ' 个维度未打分，结果仅为参考。';
+  else if (r.value >= 4.2) v = '🟢 优秀：综合素质出色，值得重点考虑。';
+  else if (r.value >= 3.5) v = '🟡 良好：主流水平，符合大多数价位预期。';
+  else if (r.value >= 3.0) v = '🟠 一般：有明显短板，看是否正好戳中你的需求。';
+  else v = '🔴 偏弱：不建议在这个价位优先选择。';
+  const price = +document.getElementById('inPrice').value;
+  if (r.full && price > 0){
+    const ratio = r.value / (price >= 2000 ? 4.6 : price >= 800 ? 4.0 : price >= 300 ? 3.6 : 3.2);
+    v += ratio >= 1 ? ' 价格匹配度不错。' : ' 相对这个价位，性价比偏低。';
+  }
+  document.getElementById('verdict').textContent = v;
+}
+function saveScore(){
+  const r = totalScore();
+  if (!r.full){ alert('请把五个维度都打分后再保存。'); return; }
+  const item = {
+    id: Date.now(),
+    name: document.getElementById('inName').value.trim() || '未命名耳机',
+    price: document.getElementById('inPrice').value.trim(),
+    type: document.getElementById('inType').value.trim(),
+    score: +r.value.toFixed(2),
+    extra: current.extra || 0,
+    parts: Object.assign({}, current),
+    time: new Date().toLocaleString()
+  };
+  scores.unshift(item);
+  localStorage.setItem(SCORE_KEY, JSON.stringify(scores));
+  renderSaved();
+  alert('已保存：' + item.name + '（' + item.score + ' 分）');
+}
+function delScore(id){
+  scores = scores.filter(s => s.id !== id);
+  localStorage.setItem(SCORE_KEY, JSON.stringify(scores));
+  renderSaved();
+}
+function loadScore(id){
+  const s = scores.find(x => x.id === id); if (!s) return;
+  document.getElementById('inName').value = s.name;
+  document.getElementById('inPrice').value = s.price;
+  document.getElementById('inType').value = s.type;
+  current = Object.assign({}, s.parts);
+  renderDims();
+  syncStars();
+  window.scrollTo({top: document.getElementById('s2').offsetTop, behavior:'smooth'});
+}
+function syncStars(){
+  Object.keys(current).forEach(k => document.querySelectorAll('.star[data-k="' + k + '"]').forEach(b => b.classList.toggle('on', +b.dataset.n === current[k])));
+}
+function renderSaved(){
+  const box = document.getElementById('savedList');
+  if (!scores.length){ box.innerHTML = '<p style="color:var(--muted)">还没有保存记录。</p>'; return; }
+  box.innerHTML = '<table><thead><tr><th>设备</th><th>价格</th><th>总分</th><th>附加</th><th>保存时间</th><th class="noiprint">操作</th></tr></thead><tbody>' +
+    scores.map(s => '<tr><td><strong>' + s.name + '</strong><br><span style="color:var(--muted)">' + (s.type || '—') + '</span></td><td>' + (s.price ? '¥' + s.price : '—') + '</td><td><strong>' + s.score + '</strong></td><td>' + (s.extra ? EXTRA_LABELS[s.extra-1] : '—') + '</td><td>' + s.time + '</td>' +
+    '<td class="noiprint"><button class="sec" onclick="loadScore(' + s.id + ')">载入</button><button class="danger" onclick="delScore(' + s.id + ')">删除</button></td></tr>').join('') + '</tbody></table>';
+}
+
+function renderTables(){
+  document.getElementById('anchorTable').innerHTML = ANCHORS.map(a => '<tr><td><strong>' + a[0] + '</strong></td><td>' + a[1] + '</td><td class="p2">' + a[2] + '</td><td class="p0">' + a[3] + '</td></tr>').join('');
+  document.getElementById('mythTable').innerHTML = MYTHS.map(m => '<tr><td>' + m[0] + '</td><td>' + m[1] + '</td><td class="' + m[2] + '">' + (m[2]==='p0'?'🔴 必避':m[2]==='p1'?'🟡 注意':'🟢 次要') + '</td></tr>').join('');
+}
+
+['inName','inPrice','inType'].forEach(id => document.getElementById(id).addEventListener('input', updateResult));
+renderDims();
+renderTables();
+renderSaved();
+</script>
+</body>
+</html>

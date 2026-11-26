@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音质与设备入门 | 听音指南</title>
+<style>
+:root{
+  --bg:#f7f8fa; --card:#fff; --ink:#1f2430; --muted:#5f6775; --line:#e3e6eb;
+  --blue:#185fa5; --blue-bg:#e6f1fb; --green:#0f6e56; --green-bg:#e1f5ee;
+  --amber:#854f0b; --amber-bg:#faeeda; --red:#a32d2d; --red-bg:#fcebeb;
+  --purple:#534ab7; --purple-bg:#eeedfe;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:15px;line-height:1.7}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px 80px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:44px 0 32px;margin-bottom:28px}
+header .wrap{padding-bottom:0}
+h1{font-size:29px;margin:0 0 8px;font-weight:600;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:15px;margin:0}
+.meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--blue-bg);color:var(--blue)}
+.tag.g{background:var(--green-bg);color:var(--green)}
+.tag.a{background:var(--amber-bg);color:var(--amber)}
+h2{font-size:21px;margin:42px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--ink);font-weight:600}
+h3{font-size:16px;margin:22px 0 8px;font-weight:600}
+p{margin:9px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:14px 0}
+.toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.toc a{display:block;padding:7px 11px;background:var(--bg);border-radius:8px;color:var(--ink);text-decoration:none;font-size:13px}
+.toc a:hover{background:var(--blue-bg);color:var(--blue)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;background:#fff;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;min-width:76px}
+th{background:#f0f3f7;font-weight:600;white-space:nowrap}
+tr:nth-child(even) td{background:#fafbfc}
+.p0{color:var(--red);font-weight:600}
+.p1{color:var(--amber);font-weight:600}
+.p2{color:var(--green);font-weight:600}
+.note{border-left:4px solid var(--blue);background:var(--blue-bg);padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+.warn{border-left:4px solid var(--red);background:var(--red-bg);padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+.tip{border-left:4px solid var(--green);background:var(--green-bg);padding:11px 15px;border-radius:0 8px 8px 0;margin:12px 0}
+.ladder{margin:16px 0}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;margin-bottom:7px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.rung.best{border:2px solid var(--blue);background:var(--blue-bg)}
+.rung .lv{flex:0 0 148px;font-weight:600;font-size:14px}
+.rung .sp{flex:0 0 190px;color:var(--ink);font-size:13px}
+.rung .ds{color:var(--muted);font-size:12.5px;line-height:1.6}
+.chain{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.chain .step{flex:1 1 120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px;text-align:center}
+.chain .step.hot{border:2px solid var(--blue);background:var(--blue-bg)}
+.chain .step b{display:block;font-size:13.5px}
+.chain .step span{font-size:12px;color:var(--muted)}
+.chain .arrow{align-self:center;color:var(--muted);font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.mini{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.mini b{font-size:14px}
+.mini p{font-size:13px;color:var(--muted);margin:6px 0 0}
+.bar{height:8px;border-radius:4px;background:var(--blue);margin:8px 0 4px}
+.bar.g{background:var(--green)} .bar.a{background:var(--amber)} .bar.r{background:var(--red)} .bar.p{background:var(--purple)}
+footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media print{body{background:#fff}header{padding:16px 0}h2{page-break-after:avoid}table{page-break-inside:avoid}.card{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="listening.css">
+</head>
+<body>
+<nav class="listening-nav noiprint" aria-label="听音指南导航"><div><a href="../index.html#listening">音乐资源指南</a><a href="audio-basics.html" aria-current="page">音质与设备入门</a><a href="bluetooth-help.html">蓝牙连接与排查</a><a href="buying-guide.html">耳机与音箱选购</a><a href="world-audio-awards.html">年度耳机与音响奖项</a><a href="headphone-tests.html">耳机评测实战</a><a href="vocal-playlist.html">人声试音歌单</a></div></nav>
+<header>
+  <div class="wrap">
+    <h1>音质与设备入门</h1>
+    <p class="sub">音质等级（128 / 320 / 无损 / HiRes / DSD）· 耳机 · 音箱 · 前端解码 · 品牌型号与参考价格 · 搭配方案</p>
+    <div class="meta">
+      <span class="tag">版本 2026-11</span>
+      <span class="tag g">面向：听歌为主的小白到进阶</span>
+      <span class="tag a">价格为网络公开参考价，促销波动大，以下单页为准</span>
+    </div>
+  </div>
+</header>
+<div class="wrap listening-start"><div class="card"><h2>手机连蓝牙音箱怎么听</h2><p>先在手机设置里连接音箱，播放熟悉的歌，再按音箱、手机和环境调整音量。比较音质时，尽量用同一首歌和接近的音量。</p></div></div>
+<div class="wrap">
+
+<div class="card">
+  <h3 style="margin-top:0">目录</h3>
+  <div class="toc">
+    <a href="#s1">1. 核心结论</a>
+    <a href="#s2">2. 音质五级阶梯</a>
+    <a href="#s3">3. 音源平台与档位</a>
+    <a href="#s4">4. 链路瓶颈：无损为何白开</a>
+    <a href="#s5">5. 设备全品类地图</a>
+    <a href="#s6">6. 耳机：品牌与价格</a>
+    <a href="#s7">7. 音箱：品牌与价格</a>
+    <a href="#s8">8. 前端：小尾巴与播放器</a>
+    <a href="#s9">9. 音源 × 设备搭配矩阵</a>
+    <a href="#s10">10. 落地配置推荐</a>
+    <a href="#s11">11. 术语速查</a>
+  </div>
+</div>
+
+<h2 id="s1">1. 核心结论</h2>
+<div class="tip">
+<strong>一句话：音源决定起点，传输决定上限，设备决定你实际听到多少。</strong>三者要匹配，任何一环短板都会让高规格白花钱。
+</div>
+<table>
+<thead><tr><th>优先级</th><th>结论</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td class="p0">🔴 P0</td><td>128kbps 与 320kbps 在普通设备上差距可闻；320kbps 与 CD 无损在百元耳机上几乎无感</td><td>先把钱花在设备上，再买高规格音源</td></tr>
+<tr><td class="p0">🔴 P0</td><td>"无损"只保证文件不丢数据，不保证传到耳朵时不 lossy</td><td>蓝牙会重新压缩；iPhone + AirPods 最高 AAC 约 256kbps</td></tr>
+<tr><td class="p0">🔴 P0</td><td>HiRes / DSD 需要前端 + 好耳机 + 安静环境三件套</td><td>手机直推 + 百元耳机听 HiRes，和听 FLAC 没区别</td></tr>
+<tr><td class="p1">🟡 P1</td><td>音箱先定场景：听歌 2.0，看电影回音壁 + 实体低音炮</td><td>单箱体蓝牙音箱变不出物理立体声</td></tr>
+<tr><td class="p2">🟢 P2</td><td>小尾巴（便携解码耳放）是性价比最高的"音质升级件"</td><td>500-1000 元档就能让手机上的有线耳机明显变好</td></tr>
+</tbody>
+</table>
+
+<h2 id="s2">2. 音质五级阶梯</h2>
+<div class="ladder">
+  <div class="rung"><div class="lv">① 有损低码率</div><div class="sp">MP3/AAC 128-192kbps<br>约 3-5MB / 首</div><div class="ds">删掉泛音与残响。安静环境细听，吉他尾音发干、镲片边缘毛躁、声场变窄。适合：背景音、流量受限、老旧车机。<div class="bar r" style="width:18%"></div></div></div>
+  <div class="rung"><div class="lv">② 有损高码率</div><div class="sp">MP3 320kbps / AAC 256kbps<br>约 8-12MB / 首</div><div class="ds">有损里的高配，320kbps 能保留约 19-20kHz 高频。通勤路上已够用；盲听测试中大多数人分不出它与 CD 无损的差别。<div class="bar a" style="width:38%"></div></div></div>
+  <div class="rung best"><div class="lv">③ CD 级无损</div><div class="sp">FLAC / ALAC / WAV<br>16bit / 44.1kHz，约 1411kbps<br>约 30-80MB / 首</div><div class="ds"><strong>分水岭。</strong>不删一个采样点，完整保留波形。百元以上耳机或音箱上，与 MP3 的差距明显可闻：高频细节与声场还原更好。多数人的"无损会员"买到这里就够了。<div class="bar" style="width:62%"></div></div></div>
+  <div class="rung"><div class="lv">④ HiRes 高解析</div><div class="sp">24bit / 96-192kHz FLAC<br>约 2000-6000kbps<br>约 100-300MB / 首</div><div class="ds">位深从 16 提到 24（动态 96dB → 144dB），高频延伸更从容。对多数随身设备，24bit/96kHz 已是能听出差别的一档。注意：部分平台"母带"是升频而非原生母带。<div class="bar p" style="width:82%"></div></div></div>
+  <div class="rung"><div class="lv">⑤ DSD 母带</div><div class="sp">DSD64/128/256<br>2.8-11.2MHz，1bit 脉冲密度<br>约 200-500MB / 首</div><div class="ds">换了一套编码逻辑，高频过渡更顺滑、空间感自然。流媒体几乎不提供，需本地文件 + 支持 DoP/DSD Native 的专业 DAC。门槛最高、受众最小。<div class="bar g" style="width:100%"></div></div></div>
+</div>
+<div class="note"><strong>存储参考：</strong>100 首 320kbps MP3 约 1GB；100 首 FLAC 约 5-8GB；100 首 HiRes 约 15-30GB。64GB 手机全下 HiRes 很快撑满。</div>
+
+<h2 id="s3">3. 音源平台与档位</h2>
+<table>
+<thead><tr><th>平台</th><th>音质档位</th><th>是否需要额外付费</th><th>国内可用性</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>QQ 音乐</td><td>标准 / 高品质 320kbps / FLAC 无损 / 部分臻品母带</td><td>无损需超级会员</td><td>直连最佳</td><td>🔴 中文曲库最全，安卓适配广</td></tr>
+<tr><td>网易云音乐</td><td>标准 / 高品质 / FLAC 无损 / 部分 HiRes</td><td>需黑胶 VIP</td><td>直连</td><td>独立音乐、社区歌单</td></tr>
+<tr><td>Apple Music</td><td>AAC 256kbps（蓝牙）/ ALAC 无损 + 24bit/192kHz + 杜比全景声（有线）</td><td>订阅即含，不加价</td><td>可用，国区曲库有差异</td><td>苹果生态、欧美/古典</td></tr>
+<tr><td>Tidal / Qobuz</td><td>HiRes FLAC 24bit/192kHz + Dolby Atmos</td><td>Tidal 全套餐含；Qobuz 分档</td><td>需稳定国际网络</td><td>发烧友、古典爵士</td></tr>
+<tr><td>Spotify</td><td>Ogg Vorbis 最高 320kbps</td><td>—</td><td>需国际网络</td><td>推荐算法最强，无无损层</td></tr>
+<tr><td>VIPER HiFi / 本地文件</td><td>HiRes / DSD256，支持 USB 独占源码输出</td><td>会员制 / 自有文件</td><td>直连</td><td>进阶发烧、本地曲库</td></tr>
+</tbody>
+</table>
+<div class="warn"><strong>防坑：</strong>把 MP3 转成 FLAC 只会得到一个"听起来和 MP3 一样"的大文件。用声谱图检查：整首歌在 16kHz 处有一道明显天花板，就是有损来源伪装成无损。部分平台标"HiRes"其实是重采样，并非原生 24bit 母带。</div>
+
+<h2 id="s4">4. 链路瓶颈：无损为何白开</h2>
+<div class="chain">
+  <div class="step"><b>① 音源文件</b><span>128 → DSD，订阅档决定起点</span></div>
+  <div class="arrow">→</div>
+  <div class="step hot"><b>② 传输链路</b><span>蓝牙重新压缩，最大瓶颈</span></div>
+  <div class="arrow">→</div>
+  <div class="step"><b>③ 解码与放大</b><span>手机直推 or 小尾巴/DAC</span></div>
+  <div class="arrow">→</div>
+  <div class="step"><b>④ 耳机 / 音箱</b><span>单元 + 调音 + 摆位</span></div>
+  <div class="arrow">→</div>
+  <div class="step"><b>⑤ 耳朵</b><span>环境与听力状态</span></div>
+</div>
+<table>
+<thead><tr><th>链路组合</th><th>实际能拿到的规格</th><th>结论</th></tr></thead>
+<tbody>
+<tr><td>iPhone + AirPods（任何音乐 App）</td><td>AAC 约 256kbps</td><td class="p0">🔴 无损会员基本白开</td></tr>
+<tr><td>安卓旗舰 + 支持 LDAC 的耳机</td><td>最高 990kbps，接近 CD 无损</td><td class="p2">🟢 无线能拿到的最好结果，但干扰大时会降级</td></tr>
+<tr><td>手机 + 小尾巴 + 有线耳机</td><td>可达 24bit/96kHz（取决于 App 与系统 SRC）</td><td class="p2">🟢 性价比最高的真无损方案</td></tr>
+<tr><td>播放器 + 外接 DAC / 座机</td><td>HiRes / DSD 原生</td><td class="p1">🟡 发烧级，需配套设备与安静环境</td></tr>
+<tr><td>蓝牙音箱 / 智能音箱</td><td>蓝牙重压缩或 WiFi 流媒体</td><td class="p1">🟡 图方便，不是为音质</td></tr>
+</tbody>
+</table>
+<div class="tip"><strong>三条设置铁律：</strong>① 关掉系统均衡器和 App 音效增强，选直通模式；② 移动网络/地铁别开最高音质，容易卡顿断连；③ 安卓若想走高规格，注意系统 SRC 重采样，必要时用支持 USB 独占输出的播放器 App。</div>
+
+<h2 id="s5">5. 设备全品类地图</h2>
+<table>
+<thead><tr><th>品类</th><th>解决什么问题</th><th>典型价位</th><th>优先级</th></tr></thead>
+<tbody>
+<tr><td>真无线耳机 TWS</td><td>通勤、运动、降噪、便携</td><td>¥95 - 2200</td><td>🔴 大多数人第一副</td></tr>
+<tr><td>头戴耳机</td><td>长时间佩戴、声场、旗舰降噪</td><td>¥99 - 3300+</td><td>🟡 在家/出差</td></tr>
+<tr><td>有线 HiFi 耳机</td><td>同价位音质最优、无电池焦虑</td><td>¥100 - 9888</td><td>🔴 音质党首选</td></tr>
+<tr><td>骨传导 / 耳夹 / 开放式</td><td>运动安全、不堵耳</td><td>¥199 - 1499</td><td>🟡 特定场景</td></tr>
+<tr><td>蓝牙便携音箱</td><td>户外、派对、氛围</td><td>¥100 - 3100</td><td>🟢 图方便</td></tr>
+<tr><td>桌面有源音箱</td><td>电脑听歌、近场监听</td><td>¥500 - 8800</td><td>🔴 桌搭首选</td></tr>
+<tr><td>回音壁 / 家庭影院</td><td>电视电影、游戏环绕</td><td>¥600 - 3000+</td><td>🟡 影音需求</td></tr>
+<tr><td>智能音箱</td><td>家居联动、语音控制</td><td>¥300 - 2700</td><td>🟢 生态玩具</td></tr>
+<tr><td>小尾巴（便携解码耳放）</td><td>让手机推动有线耳机，提升底噪与控制力</td><td>¥299 - 3800</td><td>🔴 最高性价比升级件</td></tr>
+<tr><td>便携 HiFi 播放器</td><td>独立前端、推力、味道、长续航</td><td>¥845 - 29888</td><td>🟡 进阶发烧</td></tr>
+</tbody>
+</table>
+
+<h2 id="s6">6. 耳机：品牌与价格</h2>
+<h3>6.1 真无线 TWS</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>关键功能</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>OPPO Enco Air4</td><td>¥95-135</td><td>半入耳、IPX4、无 ANC</td><td>百元备用</td></tr>
+<tr><td>水月雨 布丁</td><td>约 ¥199</td><td>10 段 PEQ、单耳 4.2g、续航 50h+</td><td>百元 HiFi 降噪尝鲜</td></tr>
+<tr><td>漫步者 X3 Air / FIIL Key Pro</td><td>¥100-200</td><td>连接稳定、基础音质</td><td>学生党</td></tr>
+<tr><td>OPPO Enco X3</td><td>¥759-799</td><td>ANC、IP55、弹窗连接</td><td>🔴 600-800 档主力推荐</td></tr>
+<tr><td>小米 Buds 5 Pro</td><td>¥800-1299</td><td>三单元、最高 55dB 降噪、aptX Lossless；区分蓝牙/Wi-Fi 版</td><td>小米/安卓旗舰</td></tr>
+<tr><td>OPPO Enco X4</td><td>¥1099-1199</td><td>丹拿双单元、LHDC Lossless 2.3Mbps</td><td>安卓音质党</td></tr>
+<tr><td>华为 FreeBuds Pro 5</td><td>¥1199-1399</td><td>星闪音频、鸿蒙协同</td><td>华为生态</td></tr>
+<tr><td>AirPods Pro 3</td><td>¥1299-1399</td><td>空间音频、头部追踪、苹果生态</td><td>iPhone 用户</td></tr>
+<tr><td>森海塞尔 Accentum Clip</td><td>约 ¥1499</td><td>耳夹、单耳 6.8g、IP54</td><td>运动、怕入耳</td></tr>
+<tr><td>索尼 WF-1000XM6</td><td>约 ¥2199</td><td>降噪标杆、AI 通话</td><td>通勤降噪极致</td></tr>
+</tbody>
+</table>
+<h3>6.2 头戴式</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>水月雨 Old Fashioned / 飞傲 WIND PRO</td><td>¥99-109</td><td>复古小头戴、开放式、轻便</td><td>百元佩戴尝鲜</td></tr>
+<tr><td>飞傲 FG3</td><td>约 ¥399</td><td>同轴双动圈 + DSP、听声辨位</td><td>游戏 + 听歌</td></tr>
+<tr><td>水月雨 EDGE 2</td><td>约 ¥499</td><td>自适应降噪 + 有线模式</td><td>HiFi 入门要降噪</td></tr>
+<tr><td>漫步者 W820NB</td><td>¥500-800</td><td>降噪 + 均衡音质</td><td>预算有限头戴降噪</td></tr>
+<tr><td>索尼 WH-CH720N</td><td>¥800-1500</td><td>轻量、降噪好</td><td>长时间佩戴</td></tr>
+<tr><td>索尼 WH-1000XM5</td><td>¥1500-2500</td><td>降噪 + 音质标杆</td><td>🔴 头戴主力推荐</td></tr>
+<tr><td>Bose QC Ultra</td><td>¥2500 以上</td><td>佩戴最舒适、降噪顶级</td><td>长途飞行</td></tr>
+<tr><td>森海塞尔 Momentum 5</td><td>约 ¥3299</td><td>HiFi 调音、可换电池</td><td>音质取向头戴党</td></tr>
+</tbody>
+</table>
+<h3>6.3 有线 HiFi</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>水月雨 CHU 3 竹 III</td><td>约 ¥100</td><td>调音温和、低频饱满</td><td>2026 VGP 金赏</td></tr>
+<tr><td>达音科 TITAN X</td><td>约 ¥199</td><td>高性能单动圈</td><td>百元越级</td></tr>
+<tr><td>水月雨 Aria 2</td><td>¥100-300</td><td>均衡、解析好</td><td>入门经典</td></tr>
+<tr><td>达音科 SA6 MK2</td><td>¥300-800</td><td>圈铁、调音成熟</td><td>进阶人声</td></tr>
+<tr><td>达音科 KIMA 2</td><td>约 ¥799</td><td>VGP 金赏</td><td>800 档甜品</td></tr>
+<tr><td>飞傲 FH15</td><td>¥800-2000</td><td>圈铁、可换插头</td><td>可玩性高</td></tr>
+<tr><td>达音科 FALCON ULTRA</td><td>约 ¥1580</td><td>单动圈、VGP 金赏</td><td>进阶旗舰</td></tr>
+<tr><td>索尼 IER-Z1R / 达音科 岚</td><td>¥2000 - 9888</td><td>旗舰圈铁 / 平板振膜</td><td>发烧级</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>华强北简述：</strong>低端（杰理/中科蓝讯，¥10-300）别碰；中端（洛达 1562M，¥140-450）可尝鲜；顶配（洛达 1562AE / 恒玄 2700YP，TWS ¥400-650、头戴 ¥550-680）约正品 80-90% 体验但无官方售后。必用 Flycc 等 APP 验芯片，选支持无理由退的商家。</div>
+
+<h2 id="s7">7. 音箱：品牌与价格</h2>
+<h3>7.1 便携蓝牙音箱 / 智能音箱</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点与边界</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>飞利浦 TAS5900</td><td>约 ¥1000</td><td>条形窄身、被动辐射板、游戏氛围强；中频单薄、有底噪</td><td>浅桌面电竞学生党</td></tr>
+<tr><td>Bose SoundLink Home</td><td>约 ¥1124</td><td>铝合金 + 实木、不到 1kg、人声醇厚；单箱体无立体声，音量超七成变薄</td><td>书房/床头小音量听歌</td></tr>
+<tr><td>小米 Sound 2 Max</td><td>约 ¥1313</td><td>101dB 声压、同轴三分频；挑摆位，贴墙角低频浑浊，米家生态绑定</td><td>米家用户、流行摇滚</td></tr>
+<tr><td>雅马哈 B200A 回音壁</td><td>约 ¥1355</td><td>杜比全景声 + 清晰语音；微型低音单元下潜不足</td><td>卧室看剧</td></tr>
+<tr><td>JBL CM500</td><td>约 ¥1397</td><td>双箱物理立体声、100W；后置倒相孔需桌面纵深 80cm+</td><td>摇滚器乐爱好者</td></tr>
+<tr><td>索尼 ULT FIELD 5</td><td>约 ¥1453</td><td>IP 防护、低音增强键；室内低频轰头</td><td>露营、户外派对</td></tr>
+<tr><td>华为 Sound X5</td><td>约 ¥1694</td><td>六单元、人声清亮；缺低延迟有线接口，算法修饰重</td><td>华为全场景用户</td></tr>
+<tr><td>马歇尔 ACTON III</td><td>约 ¥1699</td><td>复古外观、摇滚音色；单箱体声场挤，后置倒相怕贴墙</td><td>桌搭颜值党</td></tr>
+<tr><td>哈曼卡顿 琉璃 5</td><td>约 ¥1953-2400</td><td>水母造型 + 流光、氛围感强；无明确结像，近场听细节差</td><td>派对氛围、颜值党</td></tr>
+<tr><td>Apple HomePod 2</td><td>约 ¥2699</td><td>空间音频、自动房间校准；无有线音频口，封闭生态</td><td>苹果全家桶卧室用户</td></tr>
+<tr><td>JBL BOOMBOX 4</td><td>约 ¥3079</td><td>IP68、210W、30h 续航、5.89kg；室内调音两头翘</td><td>户外聚会达人</td></tr>
+</tbody>
+</table>
+<h3>7.2 桌面有源音箱 / 监听音箱</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点与边界</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>漫步者 MR5</td><td>约 ¥837</td><td>5 寸低音、前置双倒相孔、贴墙友好；蓝牙码率低、近场有底噪</td><td>小桌贴墙、编曲杂食</td></tr>
+<tr><td>惠威 D1100</td><td>约 ¥888</td><td>2.0 有源、木质箱体、蓝牙/同轴/光纤</td><td>桌面入门全能</td></tr>
+<tr><td>漫步者 S2000 MKIII</td><td>约 ¥1478</td><td>平板高音振膜、Hi-Res 金标、130W、aptX HD；后倒相需离墙半米</td><td>🔴 千元桌面首选</td></tr>
+<tr><td>惠威 X3</td><td>约 ¥1596</td><td>3 寸蛋形铝合金、中高频纯净；低频 60Hz 滚降，大动态易破音</td><td>小桌听人声器乐</td></tr>
+<tr><td>哈曼卡顿 水晶 5 流光版</td><td>约 ¥2179-2900</td><td>2.1 分体、物理声道的分离、HDMI ARC；按键反人类、靠墙低频驻波</td><td>游戏/电影 + 桌搭</td></tr>
+<tr><td>惠威 M300 MKII</td><td>约 ¥2878</td><td>等磁场带式高音、大编制从容；近场音色偏硬，需 2m+ 听距</td><td>大客厅发烧友</td></tr>
+<tr><td>雅马哈 HS8</td><td>约 ¥2000+/只</td><td>8 寸监听、平直无染色、瞬态快；体积重、占桌面</td><td>专业监听/制作</td></tr>
+<tr><td>惠威 M5A</td><td>¥6999-8800</td><td>三分频 8 寸、WiFi/蓝牙/同轴全接口</td><td>高端发烧</td></tr>
+</tbody>
+</table>
+<h3>7.3 回音壁 / 家庭影院</h3>
+<table>
+<thead><tr><th>品牌 / 型号</th><th>参考价</th><th>特点</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>漫步者 B3</td><td>¥594-699</td><td>2.0 声道、虚拟 5.1、木质箱体、70W</td><td>百元级电视增音</td></tr>
+<tr><td>雅马哈 B200A</td><td>约 ¥1355</td><td>600mm 短机身、杜比全景声、清晰语音</td><td>卧室看剧</td></tr>
+<tr><td>山水 DV-95C</td><td>约 ¥1566</td><td>5.1.2 天空反射、独立低音炮 + 双环绕；对白干瘪、无线抗干扰弱</td><td>大片氛围党</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>声道选择：</strong>听歌买 2.0（人声乐器定位最准）；看电影买回音壁 + 实体低音炮（虚拟环绕不如物理）；5.1/7.1.4 是真正家庭影院，布线和空间要求高。功率认准 RMS 额定值，别看峰值：10-20㎡ 房间 20W 够用，20-40㎡ 要 30W 以上。</div>
+
+<h2 id="s8">8. 前端：小尾巴与播放器</h2>
+<h3>8.1 小尾巴（便携解码耳放）</h3>
+<table>
+<thead><tr><th>档位</th><th>代表型号</th><th>参考价</th><th>要点</th></tr></thead>
+<tbody>
+<tr><td>尝鲜</td><td>天使吉米 Space</td><td>约 ¥498</td><td>双 CS43131，背景干净无底噪，配苹果全家桶好</td></tr>
+<tr><td>尝鲜</td><td>iFi Go Link2 Max</td><td>约 ¥568</td><td>小巧、4.4 平衡 241mW，温暖人声突出</td></tr>
+<tr><td>尝鲜</td><td>DDHiFi TC44 M3 / 天使吉米 Space Pro</td><td>约 ¥598</td><td>3.5 + 4.4 双口 / 618mW 推力，流行人声向</td></tr>
+<tr><td>尝鲜</td><td>乂度 Link10</td><td>约 ¥599</td><td>双 CS43131、300mW 平衡、60 级音量、线控</td></tr>
+<tr><td>尝鲜</td><td>山灵 UA4</td><td>¥488-640</td><td>4.4 平衡 227mW，轻巧，调音明亮活泼</td></tr>
+<tr><td>主力</td><td>丽弦 瞬解</td><td>约 ¥798</td><td>双 CS43198、551mW 平衡、APP 调 EQ</td></tr>
+<tr><td>主力</td><td>水月雨 水解 3 / 飞傲 QX11</td><td>约 ¥999</td><td>60W PD 边充边听 / 双 ES9069Q + 游戏双模</td></tr>
+<tr><td>主力</td><td>山灵 UA6 / UA6II</td><td>¥1098-1398</td><td>带小电池缓解 iPhone 电流不足 / 八颗 CS43131，信噪比 133dB</td></tr>
+<tr><td>进阶</td><td>享声 MDAT3</td><td>约 ¥1750</td><td>纯蓝牙架构、独立时钟重建、续航 8h，隔绝手机电气噪声</td></tr>
+<tr><td>一步到位</td><td>乐彼 W2 Ultra / 艾巴索 DC-Elite</td><td>¥1999-2799</td><td>大推力流行人声 / 旗舰解码 + FPGA，声音密度强</td></tr>
+<tr><td>一步到位</td><td>乐彼 W4 / 艾利和 HC5 / NiPO A200PRO</td><td>¥2999-3799</td><td>指标冗余、多年不用换；A200PRO 自带电池 12h、1620mW 推力</td></tr>
+</tbody>
+</table>
+<h3>8.2 便携 HiFi 播放器</h3>
+<table>
+<thead><tr><th>档位</th><th>代表型号</th><th>参考价</th><th>要点</th></tr></thead>
+<tbody>
+<tr><td>千元入门</td><td>飞傲 JM21</td><td>约 ¥845</td><td>双 CS43198、700mW×2、安卓 13、4.4 平衡；3+32G 存储偏小</td></tr>
+<tr><td>入门甜品</td><td>海贝 R4</td><td>约 ¥1498</td><td>525mW 平衡、A 类耳放、4500mAh</td></tr>
+<tr><td>推力取向</td><td>飞傲 M27 / 艾巴索 DX340</td><td>中高端</td><td>大推力，适合难推的旗舰耳机</td></tr>
+<tr><td>味道取向</td><td>索尼金砖 2 / 乐彼 E7</td><td>高端</td><td>调音有特色，听感取向</td></tr>
+<tr><td>底噪控制</td><td>乐图 GT2 / 艾利和 SP4000</td><td>高端</td><td>背景干净，适合高敏多单元动铁</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>选前端先看三件事：</strong>① 推力——"推响"不等于"推好"，要看 32Ω 负载下的 mW 数和耳机灵敏度；② 底噪——多单元高敏动铁会放大底噪，需要信噪比高的前端；③ 味道——R2R/电子管有偶次谐波，人声更厚更靠前，看个人喜好。三者很难同时拿满。</div>
+
+<h2 id="s9">9. 音源 × 设备搭配矩阵</h2>
+<table>
+<thead><tr><th>你的设备</th><th>推荐音源档位</th><th>理由</th><th>会员/升级建议</th></tr></thead>
+<tbody>
+<tr><td>百元内耳机 / 普通蓝牙音箱</td><td>320kbps 高品质即可</td><td>设备是瓶颈，FLAC 与 MP3 几乎无感</td><td class="p0">🔴 别买无损会员</td></tr>
+<tr><td>300 元以上耳机 / 百元有线 + 小尾巴</td><td>FLAC CD 级无损</td><td>解析力够，高频细节与声场能听出差别</td><td class="p2">🟢 最值得开的会员档</td></tr>
+<tr><td>千元耳机 + 小尾巴/DAC，安静环境</td><td>HiRes 24bit/96kHz</td><td>动态余量与高频延伸可闻</td><td class="p1">🟡 选原生母带内容，避开升频假货</td></tr>
+<tr><td>旗舰耳机 + 独立 DAC/播放器</td><td>HiRes / DSD</td><td>链路完整，母带细节有意义</td><td class="p1">🟡 本地文件 + USB 独占输出</td></tr>
+<tr><td>iPhone + AirPods</td><td>AAC 高品质 / Apple Music</td><td>蓝牙上限 AAC 256kbps</td><td class="p0">🔴 无视无损档，省会员费</td></tr>
+<tr><td>安卓旗舰 + LDAC 耳机</td><td>FLAC 无损（LDAC 可达 990kbps）</td><td>接近 CD 无损，但干扰会降级</td><td class="p2">🟢 无线里的最优解</td></tr>
+<tr><td>桌面 2.0 有源音箱</td><td>FLAC 无损 / HiRes（走同轴、光纤、USB）</td><td>别用蓝牙，有线才能发挥</td><td class="p2">🟢 接口选 HDMI/USB/同轴</td></tr>
+<tr><td>回音壁 / 智能音箱</td><td>标准/高品质 + 杜比全景声片源</td><td>看电影重声道氛围，不重音源规格</td><td class="p1">🟡 优先内容的多声道版本</td></tr>
+</tbody>
+</table>
+
+<h2 id="s10">10. 落地配置推荐</h2>
+<div class="grid">
+  <div class="mini"><b>方案 A · 100-200 元：建立听感基准</b><div class="bar a"></div><p>水月雨 CHU3 / 达音科 TITAN X（有线）+ QQ 音乐高品质 320kbps。先听清楚"音质是什么"，再决定要不要升级。</p></div>
+  <div class="mini"><b>方案 B · 300-800 元：主力听歌</b><div class="bar"></div><p>OPPO Enco X3 / 漫步者 W820NB + QQ 音乐 FLAC 无损。安卓开 LDAC。降噪、音质、功能全都有。</p></div>
+  <div class="mini"><b>方案 C · 1000-2000 元：真无损入门</b><div class="bar p"></div><p>达音科 KIMA 2 / 水月雨 EDGE 2 + 山灵 UA4 小尾巴 + FLAC 无损。手机直推升级为有线真无损。</p></div>
+  <div class="mini"><b>方案 D · 桌面听歌</b><div class="bar g"></div><p>漫步者 S2000 MKIII + 同轴/USB 接电脑 + FLAC 无损。桌面纵深要留 50cm 以上，别贴墙。</p></div>
+  <div class="mini"><b>方案 E · 通勤降噪旗舰</b><div class="bar g"></div><p>索尼 WH-1000XM5 + Apple Music / QQ 音乐。听 AAC 就够，别为无损档多花钱。</p></div>
+  <div class="mini"><b>方案 F · 发烧进阶</b><div class="bar r"></div><p>达音科 FALCON ULTRA + 乐彼 W4 / 飞傲 JM21 播放器 + 原生 HiRes 本地文件。安静环境才听得值。</p></div>
+</div>
+
+<h2 id="s11">11. 术语速查</h2>
+<table>
+<thead><tr><th>术语</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>码率 kbps</td><td>每秒音频数据量，粗略反映压缩程度；高码率不等于好听</td></tr>
+<tr><td>位深 / 采样率</td><td>16bit/44.1kHz 是 CD 标准；24bit/96kHz 以上算 HiRes</td></tr>
+<tr><td>FLAC / ALAC</td><td>两种主流无损压缩格式，FLAC 通用，ALAC 是苹果生态</td></tr>
+<tr><td>M4A</td><td>容器格式，里面可能是有损 AAC，也可能是无损 ALAC，别看扩展名判断音质</td></tr>
+<tr><td>ANC</td><td>主动降噪，用反向声波抵消低频稳态噪音，对人声基本无效</td></tr>
+<tr><td>LDAC / LHDC</td><td>高码率蓝牙编码，需手机和耳机双方支持，否则自动降级</td></tr>
+<tr><td>SRC 重采样</td><td>安卓系统把高规格音频强制降采样，绕过方法是 USB 独占输出</td></tr>
+<tr><td>小尾巴</td><td>便携解码耳放，插手机 Type-C，提升推力和底噪控制</td></tr>
+<tr><td>RMS / 峰值功率</td><td>RMS 是额定持续功率，选音箱认准 RMS，峰值数字没有参考意义</td></tr>
+<tr><td>后倒相孔</td><td>音箱低频反射结构，靠墙摆放会形成驻波让低频轰头发闷</td></tr>
+</tbody>
+</table>
+
+<footer>
+<p>数据来源：2026 年网络公开渠道（VGP 2026 评选、京东/天猫商品页、流媒体平台对比资料、耳机与音箱社区实测清单），检索日期 2026-11-26。价格为参考区间，促销与渠道差异较大，购买前请以商品页为准。</p>
+<p>本报告仅供选购参考，不构成购买承诺。听感高度主观，条件允许建议线下试听。</p>
+</footer>
+</div>
+</body>
+</html>

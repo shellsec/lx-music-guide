@@ -120,7 +120,7 @@ pre { margin: 6px 0 14px; white-space: pre-wrap; overflow-wrap: anywhere; backgr
 @media (max-width: 650px) {
   .wrap { width: calc(100% - 32px); }
   .top-inner { min-height: 62px; }
-  nav { gap: 10px; }
+  nav { flex-wrap: wrap; gap: 4px 10px; }
   nav a { font-size: .76rem; }
   .brand { font-size: .9rem; gap: 6px; }
   .disc { width: 22px; }
